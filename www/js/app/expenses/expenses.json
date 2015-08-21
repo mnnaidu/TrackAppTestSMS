@@ -1,0 +1,34 @@
+{
+	"barData": [
+		{
+			"selected": false,
+			"month": "Mar",
+			"expenses": 12684
+		},
+		{
+			"selected": false,
+			"month": "Apr",
+			"expenses": 5933
+		},
+		{
+			"selected": false,
+			"month": "May",
+			"expenses": 19169
+		},
+		{
+			"selected": false,
+			"month": "Jun",
+			"expenses": 1527
+		},
+		{
+			"selected": false,
+			"month": "Jul",
+			"expenses": 25160
+		},
+		{
+			"selected": true,
+			"month": "Aug",
+			"expenses": 25384
+		}
+	]
+}
