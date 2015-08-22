@@ -22,6 +22,23 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					})
 				})
 			};
+			
+			function setupViews(db,cb) {
+				var design = "_design/expenseTrackNew"
+				db.put(design, {
+					views : {
+						expenseTrackListsNew : {
+							map : function(doc) {
+								if (doc.trackType == "expense" && doc.date && doc.merchant && doc.amount) {
+									emit(doc.date, doc);
+								}
+							}.toString()
+						}
+					}
+				}, function(){
+					cb(false, db([design, "_view"]))
+				});
+			};
 
 			if (cblite) {
 				cblite.getURL(function(err, url) {
@@ -34,10 +51,19 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 							if (err) {
 								console.log('err', err, info);
 							} else {
-								window.config = {
-									db: db,
-									s: coax(url)
-								};
+								setupViews(db, function(err, views) {
+									if (err) {
+										console.log('err views')
+									} else {
+										console.log('views success');
+										window.config = {
+											db: db,
+											s: coax(url),
+											views : views
+										};
+										return config;
+									}
+								});
 							}
 						};
 						setupDb(db, setUpDbCb);

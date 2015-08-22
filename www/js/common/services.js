@@ -1,8 +1,19 @@
 angular.module('services', [])
-	.factory('apiServices', ['$http', '$timeout', '$q', '$log', apiServicesFn]);
-function apiServicesFn($http, $timer, $q, $log) {
+	.factory('apiServices', ['$http', '$timeout', '$q', '$log', '$timeout', apiServicesFn]);
+function apiServicesFn($http, $timer, $q, $log, $timeout) {
 	$log.log('apiService initialized!');
 	var getExpensesGraphData = function () {
+		
+		$timeout(function() {
+			$log.log("inside time out");
+			if(window.config) {  
+				config.views(["expenseTrackListsNew" , {descending : true}], function(err, expenseTrackListView) {
+					$log.log("expenseTrackListsNew",expenseTrackListView);
+				});
+			}
+		},2000);
+		
+		
 		var deferred = $q.defer();
 		$http.get("js/app/expenses/expenses.json")
 			.success(function (response) {

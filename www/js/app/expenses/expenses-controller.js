@@ -4,7 +4,10 @@ angular.module('expensesController', [])
 
 function expensesCtrlFn($scope, $log, $timeout, apiServices) {
 	$log.log('expensesCtrl called!');
-	$timeout(ctrlFn, 100);
+	
+	$scope.$on('$ionicView.enter', function(e) {
+		$timeout(ctrlFn, 100);
+	});
 
 	function ctrlFn() {
 		apiServices.getExpensesGraphData().then(function (response) {
