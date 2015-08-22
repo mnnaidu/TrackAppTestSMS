@@ -1,0 +1,197 @@
+.fl {
+	float: left
+}
+
+.fr {
+	float: right
+}
+
+.clear {
+	clear: both
+}
+
+.txt-center {
+	text-align: center
+}
+
+.no-border {
+	border: 0 !important;
+}
+
+.no-border-radius {
+	border-radius: 0 !important;
+}
+
+.heading-bar {
+	background: #55a9dd;
+}
+
+.heading-bar .title, .title.header-item, .button-clear.button-clear {
+	color: #fff;
+}
+
+.tabs-striped .tab-item.activated, .tabs-striped .tab-item.tab-item-active {
+	color: #55a9dd;
+	border-color: #55a9dd;
+}
+
+.graph-container {
+	/*background: #11c1f3;*/
+}
+
+.graph {
+	font-size: 11px;
+	shape-rendering: crispEdges;
+}
+
+.graph.expenses .axis path, .graph.income .axis path {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+/*.graph.expenses .axis .tick text, .graph.expenses .rect-bar text{
+	fill: #000;
+}*/
+
+.graph.expenses .axis .tick line, .graph.income .axis .tick line{
+	stroke: #fff;
+}
+
+/* expenses rect bar */
+.graph.expenses rect.rect-bar.activeBar{
+	fill: #7CA300;
+}
+
+.graph.expenses rect.rect-bar{
+	fill: #597500;
+}
+/* income rect bar */
+.graph.income rect.rect-bar.activeBar{
+	fill: #AA5F00/*#0848d6*/;
+}
+
+.graph.income rect.rect-bar{
+	fill: #F38D0C/*#092f83*/;
+}
+
+.list-container {
+	margin: 0;
+	padding: 0;
+}
+
+.list-heading {
+	font: 400 14px/20px Arial, Helvetica, Sans-serif;
+	color: #55a9dd;
+	margin: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #55a9dd;
+	text-transform: uppercase;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+}
+
+.list-item {
+	margin: 0;
+	padding: 5px 0;
+	cursor: pointer;
+}
+
+.list-item:first-child {
+	border-radius: 5px 5px 0 0;
+}
+
+.list-item:last-child {
+	border-radius: 0 0 5px 5px;
+}
+
+.list-item:nth-child(odd) {
+	/*background: #DFF8FC;*/
+}
+
+/*.list-item:nth-child(even) {
+background: #D2F0F3;
+}*/
+
+.cat-icon {
+	background: #ccc;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	font-size: 20px;
+	line-height: 40px;
+	margin: 0 10px;
+	padding: 0;
+	color: #fff;
+}
+
+.cat-icon.acc {
+	background: #259011;
+}
+.cat-icon.atm {
+	background: #0E4FA7;
+}
+.cat-icon.cc {
+	background: #ff4500;
+}
+.cat-icon.dc {
+	background: #06c7c7;
+}
+.cat-icon.mob {
+	background: #baa500;
+}
+
+.list-item-details {
+	width: calc(100% - 70px);
+	padding: 0 5px;
+	margin: 3px;
+}
+
+.list-item-place-date {
+	width: calc(100% - 60px);
+}
+
+.list-item-date {
+	color: #8A999B;
+	font-size: 12px;
+	line-height: 12px;
+	padding: 3px 0;
+}
+
+.list-item-place {
+	font-size: 14px;
+	line-height: 18px;
+	padding: 2px 0;
+}
+
+.list-item-place-date span, .list-item-bill-due span {
+	font-size: 12px;
+	color: #868686;
+}
+.list-item-place-date span.count {
+	border-radius: 2px;
+	background: #6ad0de;
+	color: #000;
+	padding: 1px 4px;
+	font-size: 11px;
+}
+
+.list-item-amount {
+	font-size: 14px;
+	line-height: 18px;
+	padding: 20px 0 0;
+	width: 60px;
+	text-align: right;
+}
+
+.list-item-amount.acc {
+	padding: calc(10% - 15px) 0;
+}
+
+.list-head1 {
+	background: #55a9dd;
+	color: #fff;
+}

@@ -1,0 +1,82 @@
+{
+	"smsData" : [
+		{
+			"category" : "Debit Card",
+			"smsList" : [
+				{
+					"sms" : "Dear Customer, You have made a Debit Card purchase of INR350.00 on 06 Jul. Info.VIN*ACCELYST SO. Your Net Available Balance is INRxxxxx."
+				},
+				{
+					"sms" : "Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX."
+				}
+			]
+		},
+		{
+			"category" : "Internet Banking",
+			"smsList" : [
+				{
+					"sms" : "Dear Customer, Your Ac XXXXXXXX0137 is debited with INR63,500.00  on 06 Jul. Info.ECS*SBI,RACPC,CHENN*21471006. Your Total Avbl. Bal is INRXXXXXXXX."
+				},
+				{
+					"sms" : "Dear Customer, Your Ac XXXXXXXX0137 is debited with INR6,608.00  on 06 Jul. Info.BIL*000796242458*Hyderabad b. Your Total Avbl. Bal is INRXXXXXXXX."
+				},
+				{
+					"sms" : "Dear Customer, Your Ac XXXXXXXX0137 is debited with INR24,644.23  on 07 Jul. Info.BIL*000797123223*SBI Credit . Your Total Avbl. Bal is INRXXXXXXXX."
+				}
+			]
+		},
+		{
+			"category" : "Credit Card",
+			"smsList" : [
+				{
+					"sms" : "Tranx of INR 943.00 using Credit Card 4xxx1005 is made at HOTEL SARAVANA on 11-JUL-15. Avbl Cr lmt:INR 1,51,002.97, Total Cr lmt: INR XXXXX."
+				},
+				{
+					"sms" : "Tranx of INR 250.00 using Credit Card 4xxx1005 is made at SHRI SARASWATHI on 12-JUL-15. Avbl Cr lmt:INR 1,50,752.97, Total Cr lmt: INR XXXXX."
+				},
+				{
+					"sms" : "Tranx of INR 17,000.00 using Credit Card 4xxx1005 is made at G R THANGAMALIG on 19-JUL-15. Avbl Cr lmt:INR 1,33,357.97, Total Cr lmt: INR 1,80,000.00."
+				},
+				{
+					"sms" : "Tranx of INR 395.00 using Credit Card 4xxx1005 is made at ATHRII on 18-JUL-15. Avbl Cr lmt:INR 1,50,357.97, Total Cr lmt: INR 1,80,000.00"
+				}
+			]
+		},
+		{
+			"category" : "Service Messages",
+			"smsList" : [
+				{
+					"sms" : "Dear Customer,Your ICICI Bank Credit Card X6107 is due for renewal in Sept-15. For any change in your address,please call Customer Care immediately."
+				},
+				{
+					"sms" : "Dear Customer,Service Tax has been revised from 12.36% to 14% as per amendment in Finance Act. W.e.f. 1-Jun-15, revised rate is applicable on all fees & charges."
+				},
+				{
+					"sms" : "Dear Customer, Credit Card Statement for Acct XX6008 sent by Xpress Deliveries, AWB 70282553 on 14-JUL-15. Track status at http://mobile.icicibank.com/iTrack.html"
+				}
+			]
+		},
+		{
+			"category" : "OTP",
+			"smsList" : [
+				{
+					"sms" : "Dear Customer, you have initiated fund transfer of Rs. 10000.0 from your account to RAMESH that needs an OTP. DON'T SHARE THE OTP WITH ANYONE. BANK NEVER CALLS TO VERIFY IT. This OTP is confidential and you are responsible for safeguarding it. Sharing it can lead to fraud. The OTP is 863676."
+				},
+				{
+					"sms" : "Dear Customer, you have initiated fund transfer of Rs. 28000.0 from your account to MANIMARAN that needs an OTP. DON'T SHARE THE OTP WITH ANYONE. BANK NEVER CALLS TO VERIFY IT. This OTP is confidential and you are responsible for safeguarding it. Sharing it can lead to fraud. The OTP is 863676."
+				}
+			]
+		},
+		{
+			"category" : "ATM",
+			"smsList" : [
+				{
+					"sms" : "Your Ac XX0137 is debited with INR1,500.00 NFS*CASH WDL*16-07-15. Avbl Bal INRXXXXXXX To bank on phone with iMobile, click mobile.icicibank.com/dl"
+				},
+				{
+					"sms" : "Your Ac XX0137 is debited with INR1,500.00 NFS*CASH WDL*20-07-15. Avbl Bal INRXXXXX.XX To bank on phone with iMobile, click mobile.icicibank.com/dl"
+				}
+			]
+		}
+	]
+}

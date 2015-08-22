@@ -1,0 +1,34 @@
+{
+	"barData": [
+		{
+			"selected": false,
+			"month": "Mar",
+			"income": 35481
+		},
+		{
+			"selected": false,
+			"month": "Apr",
+			"income": 28749
+		},
+		{
+			"selected": false,
+			"month": "May",
+			"income": 30215
+		},
+		{
+			"selected": false,
+			"month": "Jun",
+			"income": 45927
+		},
+		{
+			"selected": false,
+			"month": "Jul",
+			"income": 37656
+		},
+		{
+			"selected": true,
+			"month": "Aug",
+			"income": 41830
+		}
+	]
+}
