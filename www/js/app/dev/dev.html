@@ -1,7 +1,7 @@
 <ion-view view-title="Dev">
 	<ion-content>
 		<div class="list">
-			<div ng-repeat="smsData in vm" ng-init="current=$parent.count;$parent.count=$parent.count+smsData.smsList.length">
+			<div data-ng-repeat="smsData in vm" ng-init="current=$parent.count;$parent.count=$parent.count+smsData.smsList.length">
 				<div class="item item-divider list-head1">{{smsData.category}}</div>
 				<a data-ng-repeat="smsList in smsData.smsList">
 					<div class="item" data-ng-click="pushSms($parent.$index, $index)">SMS {{current + $index}}</div>
