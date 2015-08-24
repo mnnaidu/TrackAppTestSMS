@@ -396,9 +396,9 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 							bills.push({
 								accName: 'ICICI CREDIT',
 								accType: 'CREDIT',
-								accNo: ! _.isEmpty(account) ? account.substr(account.length - 4) : '',
+								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
 								amount: osAmount,
-								date: ! _.isEmpty(date) ? date.substr(0, date.length - 4) : ''
+								date: !_.isEmpty(date) ? date.substr(0, date.length - 4) : ''
 							});
 						}
 					});
@@ -424,7 +424,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 						if (account !== '') {
 							spendsByAccounts.push({
 								accName: 'ICICI CREDIT',
-								accNo: ! _.isEmpty(account) ? account.substr(account.length - 4) : '',
+								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
 								expenses: totalExpenses,
 								accType: 'CREDIT',
 								ATM: false,

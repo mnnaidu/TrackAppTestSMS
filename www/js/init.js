@@ -139,7 +139,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					$log.log('smsReader not intilized ');
 				}
 			}
-			if ( ! _.isUndefined(navigator.smsrec)) {
+			if (!_.isUndefined(navigator.smsrec)) {
 				$log.log('sms Plugin intilized');
 				navigator.smsrec.startReception(function (data) {
 					insertTranData(data)
@@ -151,7 +151,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			}
 		});
 	}])
-	.config(['couchbaseProvider', function(couchbaseProvider) {
+	.config(['couchbaseProvider', function (couchbaseProvider) {
 		couchbaseProvider.setDbName('sms');
 		couchbaseProvider.setDevUrl('http://localhost:8081/');
 	}])
@@ -190,4 +190,4 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 				}
 			});
 		$urlRouterProvider.otherwise('/app/expenses');
-	})
+	});

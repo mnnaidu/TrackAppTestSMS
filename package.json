@@ -1,7 +1,7 @@
 {
-  "name": "money-tracker",
+  "name": "latest-money-tracker",
   "version": "1.0.0",
-  "description": "money-tracker: An Ionic project",
+  "description": "latest-money-tracker: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^1.3.3",
