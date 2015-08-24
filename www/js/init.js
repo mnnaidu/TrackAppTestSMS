@@ -117,6 +117,35 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			} else {
 				console.log('cblite not intilized');
 			}
+            
+            function insertTranData(smsData) {
+                if(smsReader){
+                    var smsData = {                        
+                        //sender : smsData.address,
+                        //msg: smsData.body
+                        sender: 'AM-ICICIB',
+                        msg: 'Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX.'
+                    }
+                  smsReader.parse(smsData, function(transactionData) {
+                      debugger;
+                            transactionData.trackType = 'expense';
+                            config.db.post(transactionData, function(err, ok) {
+                                console.log('inserted success fully > ', arguments);
+                             });
+                  }, function(e) {
+                        console.log("error while parse ", e);
+                  });
+                } else {
+                    console.log("smsReader not intilized ");
+                }
+            }
+
+            if (smsrec) {
+                console.log('sms Plugin intilized');
+                smsrec.startReception(function(data) { insertTranData(data) }, function(err) { console.log(err)});
+            } else {
+                console.log('sms Plugin not intilized');
+            }
 		});
 	})
 	.config(function ($stateProvider, $urlRouterProvider) {
