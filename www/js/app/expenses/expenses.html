@@ -1,24 +1,24 @@
 <ion-view view-title="Expenses">
 	<ion-content>
 		<div class="graph-container expenses">
-			<svg class="graph expenses"></svg>
+			<svg id="expenses-graph" class="graph expenses"></svg>
 		</div>
 		<section class="list-container">
 			<div class="list-heading">Recent Spends</div>
 			<div class="list">
-				<div class="list-item">
+				<div class="list-item" data-ng-repeat="rs in recentSpends">
 					<div class="cat-icon cc txt-center fl fa fa-credit-card"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-place-date fl">
-							<div class="list-item-date">Yesterday, 18:24</div>
-							<div class="list-item-place">SBI Thiruvanmiyur</div>
+							<div class="list-item-date">{{rs.date}}</div>
+							<div class="list-item-place">{{rs.merchant}}</div>
 						</div>
-						<div class="list-item-amount fr"><i class="fa fa-inr"></i> 500.00</div>
+						<div class="list-item-amount fr"><i class="fa fa-inr"></i> {{rs.expense}}</div>
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div class="list-item">
+				<!--<div class="list-item">
 					<div class="cat-icon dc txt-center fl fa fa-credit-card"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-place-date fl">
@@ -41,7 +41,7 @@
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
-				</div>
+				</div>-->
 			</div>
 			<div class="list-heading">Bills</div>
 			<div class="list">
@@ -60,19 +60,20 @@
 			</div>
 			<div class="list-heading">Spends by accounts</div>
 			<div class="list">
-				<div class="list-item">
+				<div class="list-item" data-ng-repeat="sba in spendsByAccounts">
 					<div class="cat-icon cc txt-center fl fa fa-credit-card no-border-radius"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-place-date fl">
-							<div class="list-item-place">HDFC CREDIT <span>3541</span></div>
-							<div class="list-item-date">ATM <span class="count">4</span></div>
+							<div class="list-item-place">{{spa.accName}} <span>{{spa.accNo}}</span></div>
+							
+							<div class="list-item-date" ng-if="spa.ATM">ATM <span class="count">{{spa.ATMTrans}}</span></div>
 						</div>
-						<div class="list-item-amount acc fr"><i class="fa fa-inr"></i> 500.00</div>
+						<div class="list-item-amount acc fr"><i class="fa fa-inr"></i> {{spa.expenses}}</div>
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div class="list-item">
+				<!--<div class="list-item">
 					<div class="cat-icon acc txt-center fl fa fa-university no-border-radius"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-place-date fl">
@@ -82,7 +83,7 @@
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
-				</div>
+				</div>-->
 			</div>
 		</section>
 	</ion-content>

@@ -9,49 +9,87 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			if (window.statusBar) {
 				StatusBar.styleLightContent();
 			}
-			
 			/* Init Couch DB */
 			var coax = require("coax"),
 				appDbName = "sms";
 
 			function setupDb(db, cb) {
-				db.get(function(err, res, body){
+				db.get(function (err, res, body) {
 					console.log(JSON.stringify(["before create db put", err, res, body]))
-					db.put(function(err, res, body){
+					db.put(function (err, res, body) {
 						db.get(cb)
 					})
 				})
 			};
-			
-			function setupViews(db,cb) {
+
+			function setupViews(db, cb) {
 				var design = "_design/expenseTrackNew"
 				db.put(design, {
-					views : {
-						expenseTrackListsNew : {
-							map : function(doc) {
+					views: {
+						expenseTrackListsNew: {
+							map: function (doc) {
 								if (doc.trackType == "expense" && doc.date && doc.merchant && doc.amount) {
-									emit(doc.date, doc);
+									emit([doc.date.year, doc.date.month, doc.date.date], doc);
 								}
+							}.toString()
+						},
+						expenseTrackByAccount: {
+							map: function (doc) {
+								emit([doc.account, doc.merchant], {
+									account: doc.account,
+									merchant: doc.merchant,
+									amount: doc.amount.value,
+									currency: doc.amount.currency
+								});
+							}.toString(),
+							reduce: function (keys, values, rereduce) {
+								var response = {
+									"account": 0,
+									"merchant": 0,
+									"sum": 0
+								};
+								for (i = 0; i < values.length; i++) {
+									response.sum = response.sum + values[i].amount;
+									response.merchant = values[i].merchant;
+									response.account = values[i].account;
+								}
+								return response;
+							}.toString()
+						},
+						expenseTrackByDate: {
+							map: function (doc) {
+								emit([doc.date.year, doc.date.month, doc.date.date], doc);
+							}.toString(),
+							reduce: function (keys, values, rereduce) {
+								var response = {
+									"totalExpenses": 0
+								};
+								for (i = 0; i < values.length; i++) {
+									response.totalExpenses = response.totalExpenses + values[i].amount.value;
+									response.year = values[i].date.year;
+									response.month = values[i].date.month;
+									response.date = values[i].date.date;
+								}
+								return response;
 							}.toString()
 						}
 					}
-				}, function(){
+				}, function () {
 					cb(false, db([design, "_view"]))
-				});
-			};
-
+				})
+			}
 			if (cblite) {
-				cblite.getURL(function(err, url) {
+				cblite.getURL(function (err, url) {
 					if (err) {
 						console.log('db not initialized');
 					} else {
 						window.server = coax(url);
 						var db = coax([url, appDbName]);
-						var setUpDbCb = function(err, info) {
+						var setUpDbCb = function (err, info) {
 							if (err) {
 								console.log('err', err, info);
 							} else {
-								setupViews(db, function(err, views) {
+								setupViews(db, function (err, views) {
 									if (err) {
 										console.log('err views')
 									} else {
@@ -59,7 +97,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 										window.config = {
 											db: db,
 											s: coax(url),
-											views : views
+											views: views
 										};
 										return config;
 									}
@@ -72,7 +110,6 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			} else {
 				console.log('cblite not intilized');
 			}
-
 		});
 	})
 	.config(function ($stateProvider, $urlRouterProvider) {
