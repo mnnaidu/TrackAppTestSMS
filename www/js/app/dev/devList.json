@@ -1,6 +1,14 @@
 {
 	"smsData" : [
 		{
+			"category": "Bills",
+			"smsList": [
+				{
+					"sms": "Dear Customer, Total payment of INR 3,612.16 on Credit Card A/c 9xxx9009 is due.Pls pay min amt of INR 361.16 by 13-AUG-15 to avoid charges. Please ignore if paid."
+				}
+			]
+		},
+		{
 			"category" : "Debit Card",
 			"smsList" : [
 				{

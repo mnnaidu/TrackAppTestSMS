@@ -1,68 +1,46 @@
 'use strict';
 angular.module('expensesController', [])
-	.controller('expensesCtrl', ['$scope', '$log', '$timeout', 'apiServices', expensesCtrlFn]);
+	.controller('expensesCtrl', ['$scope', '$log', '$timeout', 'apiServices', 'couchbase', expensesCtrlFn]);
 
-function expensesCtrlFn($scope, $log, $timeout, apiServices) {
+function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	$log.log('expensesCtrl called!');
-	$scope.timeoutCalled = 0;
 	$scope.expensesGraphData = {};
 	$scope.recentSpends = [];
 	$scope.bills = [];
 	$scope.spendsByAccount = [];
+	$timeout(function(){
+		renderExpensesGraph();
+		renderExpensesList();
+	}, 2000);
 	var width, height, screenRatio, realWidth, realHeight, margin, padding, x, y, xAxis, yAxis, graph, color;
-	$scope.testCb = function () {
-		$log.log('test cb called!', typeof window.config);
-	};
-
-	$scope.$on('$ionicView.enter', function (e) {
-		if (!$scope.timeoutCalled) {
-			$timeout(timeoutCbFn, 100);
-		} else {
+	var renderExpensesGraph = function() {
+		apiServices.getExpensesGraphData().then(function(response){
+			$scope.expensesGraphData = _.has(response, 'data') ? response.data : {barData: []};
 			if (document.getElementById('expenses-graph').innerHTML === '') {
-				renderExpensesGraph();
+				renderExpensesGraphFn();
 			} else {
-				apiServices.getExpensesGraphData().then(function (response) {
-					$scope.expensesGraphData = _.has(response, 'data') ? response.data : {
-						barData: []
-					};
-					updateExpensesGraphData();
-				});
+				updateExpensesGraphFn();
 			}
-			apiServices.getExpensesListData().then(function (response) {
-				$scope.recentSpends = _.has(response, 'data') && _.has(response.data, 'recentSpends') ? response.data.recentSpends : [];
-				$scope.spendsByAccount = _.has(response, 'data') && _.has(response.data, 'spendsByAccount') ? response.data.spendsByAccount : [];
-			});
-		}
-	});
-
-	$scope.$on('updateExpenses', function (e) {
-		apiServices.getExpensesGraphData().then(function (response) {
-			$scope.expensesGraphData = _.has(response, 'data') ? response.data : {
-				barData: []
-			};
-			updateExpensesGraphData();
 		});
+	};
+	var renderExpensesList = function () {
 		apiServices.getExpensesListData().then(function (response) {
 			$scope.recentSpends = _.has(response, 'data') && _.has(response.data, 'recentSpends') ? response.data.recentSpends : [];
 			$scope.spendsByAccount = _.has(response, 'data') && _.has(response.data, 'spendsByAccount') ? response.data.spendsByAccount : [];
+			$scope.bills = _.has(response, 'data') && _.has(response.data, 'bills') ? response.data.bills : [];
 		});
+	};
+	$scope.$on('$ionicView.enter', function (e) {
+		renderExpensesGraph();
+		renderExpensesList();
 	});
 
-	function timeoutCbFn() {
-		$scope.timeoutCalled = !0;
-		apiServices.getExpensesGraphData().then(function (response) {
-			$scope.expensesGraphData = _.has(response, 'data') ? response.data : {
-				barData: []
-			};
-			renderExpensesGraph();
-		});
-		apiServices.getExpensesListData().then(function (response) {
-			$scope.recentSpends = _.has(response, 'data') && _.has(response.data, 'recentSpends') ? response.data.recentSpends : [];
-			$scope.spendsByAccounts = _.has(response, 'data') && _.has(response.data, 'spendsByAccount') ? response.data.spendsByAccount : [];
-		});
-	}
+	$scope.$on('updateExpenses', function (e) {
+		renderExpensesGraph();
+		renderExpensesList();
+	});
 
-	function renderExpensesGraph() {
+	function renderExpensesGraphFn() {
 		width = screen.height,
 			height = screen.width;
 		if (width > height) {
@@ -192,7 +170,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices) {
 			});
 	}
 
-	function updateExpensesGraphData() {
+	function updateExpensesGraphFn() {
 		x.domain($scope.expensesGraphData.barData.map(function (d) {
 			return d.month;
 		}));

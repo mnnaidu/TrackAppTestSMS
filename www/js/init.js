@@ -1,6 +1,6 @@
 'use strict';
 angular.module('money-tracker', ['ionic', 'controllers', 'services'])
-	.run(function ($ionicPlatform) {
+	.run(['$ionicPlatform', '$log', function ($ionicPlatform, $log) {
 		$ionicPlatform.ready(function () {
 			if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -10,12 +10,12 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 				StatusBar.styleLightContent();
 			}
 			/* Init Couch DB */
-			var coax = require("coax"),
-				appDbName = "sms";
+			var coax = require('coax'),
+				appDbName = 'sms';
 
 			function setupDb(db, cb) {
 				db.get(function (err, res, body) {
-					console.log(JSON.stringify(["before create db put", err, res, body]))
+					$log.log(JSON.stringify(['before create db put', err, res, body]))
 					db.put(function (err, res, body) {
 						db.get(cb)
 					})
@@ -23,12 +23,12 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			};
 
 			function setupViews(db, cb) {
-				var design = "_design/expenseTrackNew"
+				var design = '_design/expenseTrackNew'
 				db.put(design, {
 					views: {
 						expenseTrackListsNew: {
 							map: function (doc) {
-								if (doc.trackType == "expense" && doc.date && doc.merchant && doc.amount) {
+								if (doc.trackType == 'expense' && doc.date && doc.merchant && doc.amount) {
 									emit([doc.date.year, doc.date.month, doc.date.date], doc);
 								}
 							}.toString()
@@ -44,9 +44,9 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 							}.toString(),
 							reduce: function (keys, values, rereduce) {
 								var response = {
-									"account": 0,
-									"merchant": 0,
-									"sum": 0
+									'account': 0,
+									'merchant': 0,
+									'sum': 0
 								};
 								for (i = 0; i < values.length; i++) {
 									response.sum = response.sum + values[i].amount;
@@ -62,7 +62,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 							}.toString(),
 							reduce: function (keys, values, rereduce) {
 								var response = {
-									"totalExpenses": 0
+									'totalExpenses': 0
 								};
 								for (i = 0; i < values.length; i++) {
 									response.totalExpenses = response.totalExpenses + values[i].amount.value;
@@ -75,32 +75,32 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						},
 						expenseBillRemainder: {
 							map: function (doc) {
-								if (doc.trackType == "remainder" && doc.dueDate && doc.dueDate.year && doc.dueDate.month && doc.dueDate.date) {
+								if (doc.trackType == 'remainder' && doc.dueDate && doc.dueDate.year && doc.dueDate.month && doc.dueDate.date) {
 									emit([doc.dueDate.year, doc.dueDate.month, doc.dueDate.date], doc);
 								}
 							}.toString(),
 						}
 					}
 				}, function () {
-					cb(false, db([design, "_view"]))
+					cb(false, db([design, '_view']))
 				})
 			}
-			if (cblite) {
+			if (!_.isUndefined(cblite)) {
 				cblite.getURL(function (err, url) {
 					if (err) {
-						console.log('db not initialized');
+						$log.log('db not initialized');
 					} else {
-						window.server = coax(url);
+						//window.server = coax(url);
 						var db = coax([url, appDbName]);
 						var setUpDbCb = function (err, info) {
 							if (err) {
-								console.log('err', err, info);
+								$log.log('err', err, info);
 							} else {
 								setupViews(db, function (err, views) {
 									if (err) {
-										console.log('err views')
+										$log.log('err views', err)
 									} else {
-										console.log('views success');
+										$log.log('views success');
 										window.config = {
 											db: db,
 											s: coax(url),
@@ -115,10 +115,46 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					}
 				});
 			} else {
-				console.log('cblite not intilized');
+				$log.log('cblite not intilized');
+			}
+
+			function insertTranData(smsData) {
+				if (smsReader) {
+					var smsData = {
+						//sender : smsData.address,
+						//msg: smsData.body
+						sender: 'AM-ICICIB',
+						msg: 'Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX.'
+					}
+					smsReader.parse(smsData, function (transactionData) {
+						debugger;
+						transactionData.trackType = 'expense';
+						config.db.post(transactionData, function (err, ok) {
+							$log.log('inserted successfully > ', arguments);
+						});
+					}, function (e) {
+						$log.log('error while parse ', e);
+					});
+				} else {
+					$log.log('smsReader not intilized ');
+				}
+			}
+			if ( ! _.isUndefined(navigator.smsrec)) {
+				$log.log('sms Plugin intilized');
+				navigator.smsrec.startReception(function (data) {
+					insertTranData(data)
+				}, function (err) {
+					$log.log(err)
+				});
+			} else {
+				$log.log('sms Plugin not intilized');
 			}
 		});
-	})
+	}])
+	.config(['couchbaseProvider', function(couchbaseProvider) {
+		couchbaseProvider.setDbName('sms');
+		couchbaseProvider.setDevUrl('http://localhost:8081/');
+	}])
 	.config(function ($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('app', {

@@ -26,7 +26,7 @@ function devCtrlFn($scope, $log, $timeout, $ionicPopup, apiServices) {
 		smsReader.parse($scope.smsData, function(transactionData) {
 			$log.log("after parse", transactionData);
 			$scope.transactionData = transactionData;
-			$scope.transactionData.trackType = 'expense';
+			$scope.transactionData.trackType = _.has(transactionData, 'trackType') ? transactionData.trackType : 'expense';
 			config.db.post($scope.transactionData, function(err, ok) {
 				$log.log("inserted successfully");
 				$log.log('err: ', err);

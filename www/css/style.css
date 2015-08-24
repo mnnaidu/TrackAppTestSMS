@@ -150,8 +150,8 @@ background: #D2F0F3;
 	margin: 3px;
 }
 
-.list-item-place-date {
-	width: calc(100% - 60px);
+.list-item-place-date, .list-item-bill-due {
+	width: calc(100% - 70px);
 }
 
 .list-item-date {
@@ -183,7 +183,7 @@ background: #D2F0F3;
 	font-size: 14px;
 	line-height: 18px;
 	padding: 20px 0 0;
-	width: 60px;
+	width: 70px;
 	text-align: right;
 }
 

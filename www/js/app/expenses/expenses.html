@@ -6,11 +6,11 @@
 		<section class="list-container">
 			<div class="list-heading">Recent Spends</div>
 			<div class="list">
-				<div class="list-item" data-ng-repeat="rs in recentSpends" ng-init="testCb()">
+				<div class="list-item" data-ng-repeat="rs in recentSpends">
 					<div class="cat-icon cc txt-center fl fa fa-credit-card"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-place-date fl">
-							<div class="list-item-date">{{rs.date}}</div>
+							<div class="list-item-date">{{rs.dateTime}}</div>
 							<div class="list-item-place">{{rs.merchant}}</div>
 						</div>
 						<div class="list-item-amount fr"><i class="fa fa-inr"></i> {{rs.expense}}</div>
@@ -45,14 +45,14 @@
 			</div>
 			<div class="list-heading">Bills</div>
 			<div class="list">
-				<div class="list-item">
+				<div class="list-item" data-ng-repeat="bill in bills">
 					<div class="cat-icon mob txt-center fl fa fa-mobile"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-bill-due fl">
-							<div class="list-item-place">AIRTEL <span>Unknown</span></div>
-							<div class="list-item-date">Due in 7days (7d)</div>
+							<div class="list-item-place">{{bill.accName}} <span data-ng-if="bill.accNo !== ''">{{bill.accNo}}</span></div>
+							<div class="list-item-date">Due in {{bill.date}}</div>
 						</div>
-						<div class="list-item-amount fr"><i class="fa fa-inr"></i> 513.57</div>
+						<div class="list-item-amount fr"><i class="fa fa-inr"></i> {{bill.amount}}</div>
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
@@ -60,7 +60,7 @@
 			</div>
 			<div class="list-heading">Spends by accounts</div>
 			<div class="list">
-				<div class="list-item" data-ng-repeat="sba in spendsByAccounts">
+				<div class="list-item" data-ng-repeat="sba in spendsByAccount">
 					<div class="cat-icon cc txt-center fl fa fa-credit-card no-border-radius"></div>
 					<div class="list-item-details fl">
 						<div class="list-item-place-date fl">
