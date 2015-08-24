@@ -121,13 +121,10 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
             function insertTranData(smsData) {
                 if(smsReader){
                     var smsData = {                        
-                        //sender : smsData.address,
-                        //msg: smsData.body
-                        sender: 'AM-ICICIB',
-                        msg: 'Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX.'
+                        msg: smsData.body,
+                        sender: 'AM-ICICIB'
                     }
                   smsReader.parse(smsData, function(transactionData) {
-                      debugger;
                             transactionData.trackType = 'expense';
                             config.db.post(transactionData, function(err, ok) {
                                 console.log('inserted success fully > ', arguments);
@@ -140,9 +137,9 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
                 }
             }
 
-            if (smsrec) {
+            if (navigator.smsrec) {
                 console.log('sms Plugin intilized');
-                smsrec.startReception(function(data) { insertTranData(data) }, function(err) { console.log(err)});
+                navigator.smsrec.startReception(function(data) { insertTranData(data) }, function(err) { console.log(err)});
             } else {
                 console.log('sms Plugin not intilized');
             }
