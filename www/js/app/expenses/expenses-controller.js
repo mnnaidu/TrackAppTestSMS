@@ -55,6 +55,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	});
 
 	$scope.$on('updateExpenses', function (e) {
+		$log.log('updateExpenses event listen called!');
 		renderExpensesGraph();
 		renderExpensesList();
 	});

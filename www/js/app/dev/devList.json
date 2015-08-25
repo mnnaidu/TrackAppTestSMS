@@ -16,6 +16,12 @@
 				},
 				{
 					"sms" : "Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX."
+				},
+				{
+					"sms" : "Dear Customer, You have made a Debit Card purchase of INR350.00 on 06 Jul. Info.VIN*ACCELYST SO. Your Net Available Balance is INRxxxxx."
+				},
+				{
+					"sms" : "Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX."
 				}
 			]
 		},
@@ -40,13 +46,22 @@
 					"sms" : "Tranx of INR 943.00 using Credit Card 4xxx1005 is made at HOTEL SARAVANA on 11-JUL-15. Avbl Cr lmt:INR 1,51,002.97, Total Cr lmt: INR XXXXX."
 				},
 				{
-					"sms" : "Tranx of INR 250.00 using Credit Card 4xxx1005 is made at SHRI SARASWATHI on 12-JUL-15. Avbl Cr lmt:INR 1,50,752.97, Total Cr lmt: INR XXXXX."
+					"sms" : "Tranx of INR 550.00 using Credit Card 4xxx1005 is made at SHRI SARASWATHI on 18-JUL-15. Avbl Cr lmt:INR 1,50,752.97, Total Cr lmt: INR XXXXX."
 				},
 				{
-					"sms" : "Tranx of INR 17,000.00 using Credit Card 4xxx1005 is made at G R THANGAMALIG on 19-JUL-15. Avbl Cr lmt:INR 1,33,357.97, Total Cr lmt: INR 1,80,000.00."
+					"sms" : "Tranx of INR 1,000.00 using Credit Card 4xxx1005 is made at G R THANGAMALIG on 19-JUN-15. Avbl Cr lmt:INR 1,33,357.97, Total Cr lmt: INR 1,80,000.00."
 				},
 				{
-					"sms" : "Tranx of INR 395.00 using Credit Card 4xxx1005 is made at ATHRII on 18-JUL-15. Avbl Cr lmt:INR 1,50,357.97, Total Cr lmt: INR 1,80,000.00"
+					"sms" : "Tranx of INR 5999.00 using Credit Card 4xxx1005 is made at FLIPKART on 11-AUG-15. Avbl Cr lmt:INR 1,51,002.97, Total Cr lmt: INR XXXXX."
+				},
+				{
+					"sms" : "Tranx of INR 2381.49 using Credit Card 4xxx1005 is made at KFC-ADYAR on 12-JUN-15. Avbl Cr lmt:INR 1,50,752.97, Total Cr lmt: INR XXXXX."
+				},
+				{
+					"sms" : "Tranx of INR 8,549.12 using Credit Card 4xxx1005 is made at AIRTEL on 19-AUG-15. Avbl Cr lmt:INR 1,33,357.97, Total Cr lmt: INR 1,80,000.00."
+				},
+				{
+					"sms" : "Tranx of INR 13,590.00 using Credit Card 4xxx1005 is made at POTHYS on 18-MAY-15. Avbl Cr lmt:INR 1,50,357.97, Total Cr lmt: INR 1,80,000.00"
 				}
 			]
 		},
@@ -79,10 +94,16 @@
 			"category" : "ATM",
 			"smsList" : [
 				{
-					"sms" : "Your Ac XX0137 is debited with INR1,500.00 NFS*CASH WDL*16-07-15. Avbl Bal INRXXXXXXX To bank on phone with iMobile, click mobile.icicibank.com/dl"
+					"sms" : "Your Ac XX0137 is debited with INR1,600.00 NFS*CASH WDL*16-08-15. Avbl Bal INRXXXXXXX To bank on phone with iMobile, click mobile.icicibank.com/dl"
 				},
 				{
-					"sms" : "Your Ac XX0137 is debited with INR1,500.00 NFS*CASH WDL*20-07-15. Avbl Bal INRXXXXX.XX To bank on phone with iMobile, click mobile.icicibank.com/dl"
+					"sms" : "Your Ac XX0137 is debited with INR3,800.00 NFS*CASH WDL*20-06-15. Avbl Bal INRXXXXX.XX To bank on phone with iMobile, click mobile.icicibank.com/dl"
+				},
+				{
+					"sms" : "Your Ac XX0137 is debited with INR1,900.00 NFS*CASH WDL*14-08-15. Avbl Bal INRXXXXXXX To bank on phone with iMobile, click mobile.icicibank.com/dl"
+				},
+				{
+					"sms" : "Your Ac XX0137 is debited with INR8,100.00 NFS*CASH WDL*29-07-15. Avbl Bal INRXXXXX.XX To bank on phone with iMobile, click mobile.icicibank.com/dl"
 				}
 			]
 		}

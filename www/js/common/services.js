@@ -74,7 +74,7 @@ angular.module('services', [])
 			}, 100);
 
 			return couchbase;
-	}];
+		}];
 	})
 	.factory('apiServices', ['$http', '$timeout', '$q', '$log', '$timeout', apiServicesFn]);
 
@@ -83,7 +83,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 
 	function timeSince(date) {
 		var seconds = Math.floor((new Date() - new Date(date.value)) / 1000);
-		if(_.isNumber(seconds)) {
+		if (_.isNumber(seconds)) {
 			var interval = Math.floor(seconds / (365 * 24 * 60 * 60));
 			if (interval > 0) {
 				return interval + ' year' + (interval > 1 ? 's' : '') + ' ago';
@@ -153,7 +153,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 									data.push({
 										selected: cMonth === month,
 										expenses: totalExpenses,
-										month: dateutil.format(new Date(cYear, month-1, 1), 'M')
+										month: dateutil.format(new Date(cYear, month, 1), 'M')
 									});
 									return false;
 								}
@@ -164,7 +164,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 							data.push({
 								selected: cMonth === expMonth,
 								expenses: 0,
-								month: dateutil.format(new Date(expYear, expMonth-1, 1), 'M')
+								month: dateutil.format(new Date(expYear, expMonth, 1), 'M')
 							});
 						}
 					});
@@ -221,8 +221,8 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 								merchant: merchant,
 								dateTime: timeSince(date),
 								expense: expense,
-								accType: 'CREDIT',
-								ATM: false
+								accType: accType,
+								ATM: accType === 'DEBIT-CASH'
 							});
 						}
 						return !(recentSpends.length === 3);
@@ -276,15 +276,17 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 						var key = _.has(row, 'key') ? row.key : [];
 						var value = _.has(row, 'value') ? row.value : {};
 						var account = _.has(value, 'account') ? value.account : '';
+						var accType = _.has(value, 'accType') ? value.accType : '';
 						var totalExpenses = _.has(value, 'sum') ? value.sum : 0;
+						var atmTransCount = _.has(value, 'atmTransCount') ? value.atmTransCount : 0;
 						if (account !== '') {
 							spendsByAccounts.push({
-								accName: 'ICICI CREDIT',
+								accName: 'ICICI ' + (accType === 'DEBIT-CASH' ? 'DE' : 'CRE') + 'DIT',
 								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
 								expenses: totalExpenses,
-								accType: 'CREDIT',
-								ATM: false,
-								ATMTrans: 0
+								accType: accType,
+								ATM: accType === 'DEBIT-CASH',
+								ATMTrans: atmTransCount
 							});
 						}
 					});
