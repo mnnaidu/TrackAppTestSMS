@@ -295,7 +295,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 									data.push({
 										selected: cMonth === month,
 										expenses: totalExpenses,
-										month: dateutil.format(new Date(cYear, month, 1), 'M')
+										month: dateutil.format(new Date(cYear, month-1, 1), 'M')
 									});
 									return false;
 								}
@@ -306,7 +306,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 							data.push({
 								selected: cMonth === expMonth,
 								expenses: 0,
-								month: dateutil.format(new Date(expYear, expMonth, 1), 'M')
+								month: dateutil.format(new Date(expYear, expMonth-1, 1), 'M')
 							});
 						}
 					});

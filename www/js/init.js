@@ -122,13 +122,10 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 				if (smsReader) {
 					var smsData = {
 						//sender : smsData.address,
-						//msg: smsData.body
-						sender: 'AM-ICICIB',
-						msg: 'Dear Customer, You have made a Debit Card purchase of INR300.00 on 15 Jul. Info.VPS*MADHUS SERV. Your Net Available Balance is INR XXXXX.'
+						msg: smsData.body,
+						sender: 'AM-ICICIB' // TODO fix the address once we decide to test with provider. - ARUL
 					}
 					smsReader.parse(smsData, function (transactionData) {
-						debugger;
-						transactionData.trackType = 'expense';
 						config.db.post(transactionData, function (err, ok) {
 							$log.log('inserted successfully > ', arguments);
 						});
