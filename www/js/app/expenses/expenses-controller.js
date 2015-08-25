@@ -8,7 +8,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	// initially load empty graph
 	function initExpensesGraphFn() {
 		var cDate = new Date(), cYear = cDate.getFullYear(), cMonth = cDate.getMonth() + 1, retMonArr = [];
-		for (i = 6; i > 0; i--) {
+		for (var i = 6; i > 0; i--) {
 			var m, y;
 			if (cMonth < 6) {
 				m = cMonth - i < 0 ? 12 + (cMonth + 1 - i) : cMonth + 1 - i, y = cMonth - i < 0 ? cYear - 1 : cYear;
@@ -23,6 +23,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 		}
 		renderExpensesGraphFn();
 	}
+	initExpensesGraphFn();
 	$scope.recentSpends = [];
 	$scope.bills = [];
 	$scope.spendsByAccount = [];
