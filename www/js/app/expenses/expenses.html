@@ -5,7 +5,7 @@
 		</div>
 		<section class="list-container">
 			<div class="list-heading">Recent Spends</div>
-			<div class="list">
+			<div class="list" data-ng-if="recentSpends.length > 0">
 				<div class="list-item" data-ng-repeat="rs in recentSpends">
 					<div class="cat-icon cc txt-center fl fa fa-credit-card"></div>
 					<div class="list-item-details fl">
@@ -43,8 +43,11 @@
 					<div class="clear"></div>
 				</div>-->
 			</div>
-			<div class="list-heading">Bills</div>
-			<div class="list">
+			<div class="list" data-ng-if="recentSpends.length < 1">
+				<data class="lits-item" style="margin:10px;">Oops! Recent spends not found.</data>
+			</div>
+			<div class="list-heading" data-ng-if="bills.length > 0">Bills</div>
+			<div class="list" data-ng-if="bills.length > 0">
 				<div class="list-item" data-ng-repeat="bill in bills">
 					<div class="cat-icon mob txt-center fl fa fa-mobile"></div>
 					<div class="list-item-details fl">
@@ -59,7 +62,7 @@
 				</div>
 			</div>
 			<div class="list-heading">Spends by accounts</div>
-			<div class="list">
+			<div class="list" data-ng-if="spendsByAccount.length > 0">
 				<div class="list-item" data-ng-repeat="sba in spendsByAccount">
 					<div class="cat-icon cc txt-center fl fa fa-credit-card no-border-radius"></div>
 					<div class="list-item-details fl">
@@ -84,6 +87,9 @@
 					</div>
 					<div class="clear"></div>
 				</div>-->
+			</div>
+			<div class="list" data-ng-if="spendsByAccount.length < 1">
+				<data class="lits-item" style="margin:10px;">Oops! Accounts not found.</data>
 			</div>
 		</section>
 	</ion-content>

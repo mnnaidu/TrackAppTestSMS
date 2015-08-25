@@ -4,7 +4,25 @@ angular.module('expensesController', [])
 
 function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	$log.log('expensesCtrl called!');
-	$scope.expensesGraphData = {};
+	$scope.expensesGraphData = [];
+	// initially load empty graph
+	function initExpensesGraphFn() {
+		var cDate = new Date(), cYear = cDate.getFullYear(), cMonth = cDate.getMonth() + 1, retMonArr = [];
+		for (i = 6; i > 0; i--) {
+			var m, y;
+			if (cMonth < 6) {
+				m = cMonth - i < 0 ? 12 + (cMonth + 1 - i) : cMonth + 1 - i, y = cMonth - i < 0 ? cYear - 1 : cYear;
+			} else {
+				m = cMonth + 1 - i, y = cYear;
+			}
+			$scope.expensesGraphData.push({
+				selected: cMonth === m,
+				expenses: 0,
+				month: dateutil.format(new Date(y, m, 1), 'M')
+			});
+		}
+		renderExpensesGraphFn();
+	}
 	$scope.recentSpends = [];
 	$scope.bills = [];
 	$scope.spendsByAccount = [];
@@ -15,7 +33,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	var width, height, screenRatio, realWidth, realHeight, margin, padding, x, y, xAxis, yAxis, graph, color;
 	var renderExpensesGraph = function() {
 		apiServices.getExpensesGraphData().then(function(response){
-			$scope.expensesGraphData = _.has(response, 'data') ? response.data : {barData: []};
+			$scope.expensesGraphData = _.has(response, 'data') ? response.data : [];
 			if (document.getElementById('expenses-graph').innerHTML === '') {
 				renderExpensesGraphFn();
 			} else {
@@ -97,10 +115,10 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 		color = d3.scale.ordinal()
 			.range(['#e3e3e3', '#fff']);
 
-		x.domain($scope.expensesGraphData.barData.map(function (d) {
+		x.domain($scope.expensesGraphData.map(function (d) {
 			return d.month;
 		}));
-		y.domain([0, d3.max($scope.expensesGraphData.barData, function (d) {
+		y.domain([0, d3.max($scope.expensesGraphData, function (d) {
 			return d.expenses;
 		})]);
 
@@ -110,7 +128,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 			.call(xAxis);
 
 		graph.selectAll('.rect-bar')
-			.data($scope.expensesGraphData.barData)
+			.data($scope.expensesGraphData)
 			.enter()
 			.append('rect')
 			.on('click', function () {
@@ -148,7 +166,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 			});
 
 		graph.selectAll('.rect-bar-label')
-			.data($scope.expensesGraphData.barData)
+			.data($scope.expensesGraphData)
 			.enter()
 			.append('text')
 			.attr('class', 'rect-bar-label')
@@ -171,10 +189,10 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	}
 
 	function updateExpensesGraphFn() {
-		x.domain($scope.expensesGraphData.barData.map(function (d) {
+		x.domain($scope.expensesGraphData.map(function (d) {
 			return d.month;
 		}));
-		y.domain([0, d3.max($scope.expensesGraphData.barData, function (d) {
+		y.domain([0, d3.max($scope.expensesGraphData, function (d) {
 			return d.expenses;
 		})]);
 
@@ -185,7 +203,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 			.duration(500)
 			.call(xAxis);
 
-		var bars = graph.selectAll('.rect-bar').data($scope.expensesGraphData.barData);
+		var bars = graph.selectAll('.rect-bar').data($scope.expensesGraphData);
 		bars.transition()
 			.delay(function (d, i) {
 				return i * 50;
@@ -204,7 +222,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 			.attr('height', function (d) {
 				return height - y(d.expenses);
 			});
-		var labels = graph.selectAll('.rect-bar-label').data($scope.expensesGraphData.barData);
+		var labels = graph.selectAll('.rect-bar-label').data($scope.expensesGraphData);
 		labels.transition()
 			.delay(function (d, i) {
 				return i * 50;

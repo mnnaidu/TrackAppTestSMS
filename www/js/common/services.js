@@ -311,9 +311,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 						}
 					});
 					deferred.resolve({
-						data: {
-							barData: data
-						}
+						data: data
 					});
 				}
 			});
