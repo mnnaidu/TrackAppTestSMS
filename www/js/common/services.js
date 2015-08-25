@@ -229,27 +229,31 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 
 	function timeSince(date) {
 		var seconds = Math.floor((new Date() - new Date(date.value)) / 1000);
-		var interval = Math.floor(seconds / (365 * 24 * 60 * 60));
-		if (interval > 0) {
-			return interval + ' year' + (interval > 1 ? 's' : '') + ' ago';
+		if(_.isNumber(seconds)) {
+			var interval = Math.floor(seconds / (365 * 24 * 60 * 60));
+			if (interval > 0) {
+				return interval + ' year' + (interval > 1 ? 's' : '') + ' ago';
+			}
+			interval = Math.floor(seconds / (30 * 24 * 60 * 60));
+			if (interval > 0) {
+				return interval + ' month' + (interval > 1 ? 's' : '') + ' ago';
+			}
+			interval = Math.floor(seconds / (24 * 60 * 60));
+			if (interval > 0) {
+				return interval + ' day' + (interval > 1 ? 's' : '') + ' ago';
+			}
+			interval = Math.floor(seconds / (60 * 60));
+			if (interval > 0) {
+				return interval + ' hour' + (interval > 1 ? 's' : '') + ' ago';
+			}
+			interval = Math.floor(seconds / 60);
+			if (interval > 0) {
+				return interval + ' minute' + (interval > 1 ? 's' : '') + ' ago';
+			}
+			return Math.floor(seconds) + ' second' + (interval > 1 ? 's' : '') + ' ago';
 		}
-		interval = Math.floor(seconds / (30 * 24 * 60 * 60));
-		if (interval > 0) {
-			return interval + ' month' + (interval > 1 ? 's' : '') + ' ago';
-		}
-		interval = Math.floor(seconds / (24 * 60 * 60));
-		if (interval > 0) {
-			return interval + ' day' + (interval > 1 ? 's' : '') + ' ago';
-		}
-		interval = Math.floor(seconds / (60 * 60));
-		if (interval > 0) {
-			return interval + ' hour' + (interval > 1 ? 's' : '') + ' ago';
-		}
-		interval = Math.floor(seconds / 60);
-		if (interval > 0) {
-			return interval + ' minute' + (interval > 1 ? 's' : '') + ' ago';
-		}
-		return Math.floor(seconds) + ' second' + (interval > 1 ? 's' : '') + ' ago';
+		$log.log('Error preparing timeSince: data.value: ', date.value);
+		return '';
 	}
 	var getExpensesGraphData = function () {
 		var data = [];
