@@ -50,7 +50,7 @@ var smsReader = (function (smsReader) {
 			bank: "ICICI",
 			type: "DUE-CREDIT-BILL",
 			trackType: "remainder",
-			msgTemplates: ["Dear Customer, Total payment of", "on Credit Card A/c", "is due.Pls pay min amt of", "by", "to avoid charges. Please ignore if paid."],
+			msgTemplates: ["Dear Customer, Total payment of", "on Credit Card A/c", "is due.Pls pay min amt of", "by", "to avoid charges."], //TODO FIX TO BE DONE FOR THE MORE CHAR LENGTH.- Arul
 			attributtes: ["osAmount", "account", "minAmount", "dueDate", "others"],
 			attrTypes: ["INR", "alphanumeric", "INR", "DDMMYY", "alphanumeric"],
 			charsToRemove: ["", "", "", "", ""]
