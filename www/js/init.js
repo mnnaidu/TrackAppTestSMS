@@ -1,6 +1,6 @@
 'use strict';
 angular.module('money-tracker', ['ionic', 'controllers', 'services'])
-	.run(['$ionicPlatform', '$log', function ($ionicPlatform, $log) {
+	.run(['$ionicPlatform', '$rootScope', '$log', function ($ionicPlatform, $rootScope, $log) {
 		$ionicPlatform.ready(function () {
 			if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -11,7 +11,8 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			}
 			/* Init Couch DB */
 			var coax = require('coax'),
-				appDbName = 'sms';
+				appDbName = 'sms',
+				scope = $rootScope;
 
 			function setupDb(db, cb) {
 				db.get(function (err, res, body) {
@@ -39,19 +40,26 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 									account: doc.account,
 									merchant: doc.merchant,
 									amount: doc.amount.value,
-									currency: doc.amount.currency
+									currency: doc.amount.currency,
+									accType: doc.accType
 								});
 							}.toString(),
 							reduce: function (keys, values, rereduce) {
 								var response = {
 									'account': 0,
 									'merchant': 0,
-									'sum': 0
+									'sum': 0,
+									'accType': 0,
+									'atmTransCount': 0
 								};
 								for (i = 0; i < values.length; i++) {
 									response.sum = response.sum + values[i].amount;
 									response.merchant = values[i].merchant;
 									response.account = values[i].account;
+									response.accType = values[i].accType;
+									if(values[i].accType === 'DEBIT-CASH') {
+										response.atmTransCount += 1;
+									}
 								}
 								return response;
 							}.toString()
@@ -127,6 +135,8 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					}
 					smsReader.parse(smsData, function (transactionData) {
 						config.db.post(transactionData, function (err, ok) {
+							scope.$broadcast('updateExpenses');
+							$log.log('updateExpenses event broadcasted!');
 							$log.log('inserted successfully > ', arguments);
 						});
 					}, function (e) {

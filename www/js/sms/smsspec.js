@@ -48,7 +48,7 @@ var smsReader = (function (smsReader) {
 		};
 		var ccCardBillRemainder = {
 			bank: "ICICI",
-			type: "DUE-CREDIT-BILL",
+			type: "CREDIT-BILL",
 			trackType: "remainder",
 			msgTemplates: ["Dear Customer, Total payment of", "on Credit Card A/c", "is due.Pls pay min amt of", "by", "to avoid charges."], //TODO FIX TO BE DONE FOR THE MORE CHAR LENGTH.- Arul
 			attributtes: ["osAmount", "account", "minAmount", "dueDate", "others"],
