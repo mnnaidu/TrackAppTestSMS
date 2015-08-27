@@ -130,7 +130,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 				if (smsReader) {
 					var smsData = {
 						//sender : smsData.address,
-						msg: 'Your Ac XX0137 is debited with INR1,900.00 NFS*CASH WDL*14-06-15. Avbl Bal INRXXXXXXX To bank on phone with iMobile, click mobile.icicibank.com/dl',//smsData.body,
+						msg: smsData.body,
 						sender: 'AM-ICICIB' // TODO fix the address once we decide to test with provider. - ARUL
 					}
 					smsReader.parse(smsData, function (transactionData) {

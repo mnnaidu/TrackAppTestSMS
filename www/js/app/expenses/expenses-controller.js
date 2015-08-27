@@ -27,6 +27,31 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 	$scope.recentSpends = [];
 	$scope.bills = [];
 	$scope.spendsByAccount = [];
+	$scope.getClassNames = function(accType, isAtmTrans) {
+		if(isAtmTrans) {
+			return 'atm fa-user';
+		} else {
+			var retClassNames = '';
+			switch (accType) {
+				case 'CREDIT':
+					retClassNames = 'cc fa-credit-card';
+					break;
+				case 'DEBIT':
+					retClassNames = 'dc fa-credit-card';
+					break;
+				case 'DEBIT-ECS':
+					retClassNames = 'acc fa-university';
+					break;
+				case 'DEBIT-BILL':
+					retClassNames = 'acc fa-university';
+					break;
+				case 'CREDIT-BILL':
+					retClassNames = 'cc fa-credit-card';
+					break;
+			};
+			return retClassNames;
+		}
+	}
 	$timeout(function(){
 		renderExpensesGraph();
 		renderExpensesList();

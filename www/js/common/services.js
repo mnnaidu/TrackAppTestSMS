@@ -210,6 +210,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 				} else {
 					var rows = _.has(response, 'rows') ? response.rows : [];
 					_.every(rows, function (row, i) {
+						$log.log('recent spends: row: ', row);
 						var key = _.has(row, 'key') ? row.key : [];
 						var value = _.has(row, 'value') ? row.value : {};
 						var accType = _.has(value, 'accType') ? value.accType : '';
@@ -242,6 +243,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 				} else {
 					var rows = _.has(response, 'rows') ? response.rows : [];
 					_.each(rows, function (row, i) {
+						$log.log('bills: row: ', row);
 						var key = _.has(row, 'key') ? row.key : [];
 						var value = _.has(row, 'value') ? row.value : {};
 						var account = _.has(value, 'account') ? value.account : '';
@@ -273,6 +275,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 				} else {
 					var rows = _.has(response, 'rows') ? response.rows : [];
 					_.each(rows, function (row, i) {
+						$log.log('spends by acc: row: ', row);
 						var key = _.has(row, 'key') ? row.key : [];
 						var value = _.has(row, 'value') ? row.value : {};
 						var account = _.has(value, 'account') ? value.account : '';
@@ -281,7 +284,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 						var atmTransCount = _.has(value, 'atmTransCount') ? value.atmTransCount : 0;
 						if (account !== '') {
 							spendsByAccounts.push({
-								accName: 'ICICI ' + (accType === 'DEBIT-CASH' ? 'DE' : 'CRE') + 'DIT',
+								accName: 'ICICI ' + (accType === 'CREDIT' ? 'CRE' : 'DE') + 'DIT',
 								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
 								expenses: totalExpenses,
 								accType: accType,
