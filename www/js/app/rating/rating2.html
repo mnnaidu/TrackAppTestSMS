@@ -1,0 +1,19 @@
+<ion-view view-title="Rating">
+	<ion-content>
+        <progress max="100" value="60"> </progress>
+        <div class="list-heading"> Q3. Confirm Your Credit Usage? </div>
+        <div class="list" data-ng-if="ccCards.length > 0">
+            <div class="list-item" data-ng-repeat="ccCard in ccCards">
+                <div class="cat-icon cc txt-center fl fa fa-credit-card no-border-radius"></div>
+                <div class="list-item-details fl">
+                    <div class="list-item-place-date fl" ng-click="next('app/rating4')">
+                        <div class="list-item-place">{{ccCard.accName}} <span>{{ccCard.accNo}}</span></div>
+                    </div>
+                    <div class="list-item-amount acc fr"><i class="fa fa-inr"></i> {{ccCard.creditUsage}} <span>{{ccCard.usagePercentage}}</span> </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

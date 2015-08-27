@@ -1,0 +1,33 @@
+<ion-view view-title="Rating">
+	<ion-content>
+        <progress max="100" value="85"> </progress>
+        <div class="list-heading"> Q2. Recent Credit Card less than 1 year</div>
+        <div class="list" data-ng-if="ccCards.length > 0">
+            <div class="item item-icon-left " data-ng-repeat="ccCard in ccCards">
+                <i class="icon ion-card"></i>
+                <label class="item-radio" >
+                    <input type="radio" name="group">
+                    <div class="item-content">
+                         <div class="list-item-details fl">
+                                <div class="list-item-place-date fl">
+                                    <div class="list-item-place">{{ccCard.accName}} <span>{{ccCard.accNo}}</span></div>
+                                </div>
+                        </div>
+                    </div>
+                    <i class="radio-icon"></i>
+                </label>
+            </div>
+            <button class="button button-block button-positive" ng-click="next('app/rating4')">Next</button>
+        </div>
+        
+      <!--div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Loan to be paid">
+          </label>
+          <label class="item item-input">
+            <input type="text" placeholder="Fixed Income">
+          </label>
+          <button class="button button-block button-positive" ng-click="doRate()" >Rate Me</button>
+        </div-->
+    </ion-content>
+</ion-view>

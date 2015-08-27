@@ -85,7 +85,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					cb(false, db([design, '_view']))
 				})
 			}
-			if (!_.isUndefined(cblite)) {
+			if (!_.isUndefined(window.cblite)) {
 				cblite.getURL(function (err, url) {
 					if (err) {
 						$log.log('db not initialized');
@@ -183,6 +183,67 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					'tab-dev': {
 						templateUrl: 'js/app/dev/dev.html',
 						controller: 'devCtrl'
+					}
+				}
+			})
+            .state('app.rating', {
+				url: '/rating',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/rating.html',
+						controller: 'ratingCtrl'
+					}
+				}
+			})
+            .state('app.rating1', {
+				url: '/rating1',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/rating1.html',
+						controller: 'rating1Ctrl'
+					}
+				}
+			})
+            .state('app.rating1_1', {
+				url: '/rating1_1',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/rating1_1.html',
+						controller: 'ratingCtrl'
+					}
+				}
+			})
+            .state('app.rating2', {
+				url: '/rating2',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/rating2.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}) 
+            .state('app.rating3', {
+				url: '/rating3',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/rating3.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.rating4', {
+				url: '/rating4',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/rating4.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingSummary', {
+				url: '/ratingsummary',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingSummary.html',
+						controller: 'rating2Ctrl'
 					}
 				}
 			});

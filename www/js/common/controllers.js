@@ -1,1 +1,1 @@
-angular.module('controllers', ['expensesController', 'incomeController', 'devController']);
+angular.module('controllers', ['expensesController', 'incomeController', 'devController','ratingController']);

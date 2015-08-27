@@ -1,0 +1,20 @@
+<ion-view view-title="Rating  Score">
+	<ion-content>
+        <progress max="100" value="75"> </progress>
+        <div class="list-heading"> Q3. Confirm Your Account Balance? </div>
+        <div class="list" data-ng-if="drCards.length > 0">
+            <div class="list-item" data-ng-repeat="drCard in drCards">
+                <div class="cat-icon cc txt-center fl fa fa-credit-card no-border-radius"></div>
+                <div class="list-item-details fl">
+                    <div class="list-item-place-date fl">
+                            <div class="list-item-place">{{drCard.accName}} <span>{{drCard.accNo}}</span></div>
+                            <div class="list-item-amount acc fr"><i class="fa fa-inr"></i> {{drCard.balance}} </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <button class="button button-block button-positive" ng-click="next('app/rating4')" >Next</button>
+        </div>
+    </ion-content>
+</ion-view>
