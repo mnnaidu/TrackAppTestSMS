@@ -195,3 +195,16 @@ background: #D2F0F3;
 	background: #55a9dd;
 	color: #fff;
 }
+
+.card-icon {
+    font-size: 24px;
+    color: #428dba;
+}
+
+.button.next-button {
+    background-color:#428dba;
+}
+
+.card-item {
+    margin-left: 10px;
+}

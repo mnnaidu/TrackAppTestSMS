@@ -3,21 +3,27 @@
         <progress max="100" value="95"> </progress>
         <div class="list-heading"> Confirm Other Credits </div>
         <div class="list" data-ng-if="loans.length > 0">
-            <div class="item " data-ng-repeat="loan in loans">
-                    <div class="item-content">
-                         <div>
-                            <div class="fl">
-                                <div class="list-item-place">{{loan.lender}}  <span class="list-item-date">  {{loan.tenure}}  </span>  </div>
-                            </div>
-                            <div class="fr"> 
-                                <span>{{loan.osAmount}}</span>
-                             </div>
-                             <div class="clear"></div>
-                        </div>
-                    </div>
+            <div class="item item-icon-left" data-ng-repeat="loan in loans">
+                <i class="icon fa ng-class: loan.icon; card-icon"></i>
+                <div class="item-content">
+                    <div class="list-item-place-date fl">
+                        <div class="list-item-place">{{loan.lender}}</div>
+                        <div class="list-item-date">{{loan.tenure}}</div>
+                     </div>
+                    <div class="list-item-amount fr"><i class="fa fa-inr"></i> {{loan.osAmount}} </div>
+                    <div class="clear"></div>
+                </div>
             </div>
         
-            <button class="button button-block button-positive" ng-click="next('app/ratingsummary')" >Score</button>
+            <button class="button next-button button-block button-positive" ng-click="next('app/ratingsummary')" >Score</button>
         </div>
     </ion-content>
 </ion-view>
+
+                         <!--div>
+                             <i class="fa fa-home"></i>
+                            <div class="fl">
+                                <div class="list-item-place">{{loan.lender}}  <span class="list-item-date">  {{loan.tenure}}  </span>  </div>
+                            </div>
+                            
+                        </div-->

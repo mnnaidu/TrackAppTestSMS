@@ -56,12 +56,14 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
     $scope.loans.push( {
         lender : 'LICHFL HOME LOAN',
         osAmount : '4,00,000',
-        tenure :  '20yrs'
+        tenure :  '20yrs',
+        icon : 'fa-home'
     });
    $scope.loans.push( {
         lender : 'ICICI CAR LOAN',
         osAmount : '40,000',
-        tenure :  '1yr'
+        tenure :  '1yr',
+        icon : 'fa-car'
     });
 
     $scope.next = function(path) {
