@@ -74,10 +74,10 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
     
     $scope.drawRatingGraph = function () {
         $log.log("draw graph ...");
-        var w = 400,                        //width
-            h = 200,                            //height
-            r = 200,                            //radius
-            ir = 80,
+        var w = 280,                        //width
+            h = 140,                            //height
+            r = 140,                            //radius
+            ir = 50,
             pi = Math.PI,
             color = d3.scale.category20c(),    
 
@@ -124,13 +124,13 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
             .attr("text-anchor", "middle")                          
             .text(function(d, i) { return data[i].name; });        
             
-           d3.select("svg").append("svg:g")
+           d3.select("#ratingGraph").append("svg:g")
                 .attr("class", "line")
                 .append('line')
-                .attr('x1', 200)
-                .attr('y1', 200)
-                .attr('x2', 90)
-                .attr('y2', 120)
+                .attr('x1', 140)
+                .attr('y1', 140)
+                .attr('x2', 80)
+                .attr('y2', 80)
                 .attr('stroke', '#3182BD')
                 .attr('stroke-width', '2px')
                 .attr('fill', 'none');

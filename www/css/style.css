@@ -208,3 +208,8 @@ background: #D2F0F3;
 .card-item {
     margin-left: 10px;
 }
+
+.radio-icon.card-select {
+    top: 10px;
+    color: #428dba;
+}
