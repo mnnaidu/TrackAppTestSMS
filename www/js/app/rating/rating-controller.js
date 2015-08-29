@@ -65,6 +65,39 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
         tenure :  '1yr',
         icon : 'fa-car'
     });
+    
+    
+    $scope.creditOffers = [];
+    
+    $scope.creditOffers.push( {
+        lender : 'ICICI',
+        amount : '2,00,000',
+        interest :  '20yrs',
+        icon : 'fa-home',
+        desc: 'offers you personal loan of 1,00,000 @ 10% tenure 3 - 4yrs processed in 1 day',
+        src : 'img/checked1.png',
+        logo : 'img/icici.svg'
+    });
+    
+   $scope.creditOffers.push( {
+        lender : 'ICICI CAR LOAN',
+        osAmount : '40,000',
+        tenure :  '1yr',
+        icon : 'fa-car',
+        desc: 'offers you personal loan of 90,000 @ 13% tenure 2 - 3yrs processed in 2 days',
+        src : 'img/checked1.png',
+        logo : 'img/hdfc.svg'
+    });
+    
+    $scope.creditOffers.push( {
+        lender : 'ICICI CAR LOAN',
+        osAmount : '40,000',
+        tenure :  '1yr',
+        icon : 'fa-car',
+        desc: 'get more endorse from your friends, to avail personal loan of 80,000 @ 13% tenure 2 - 3yrs processed in 2 days',
+        src : 'img/addMore.png',
+        logo : 'img/kotak.svg'
+    });
 
     $scope.next = function(path) {
         $log.log("Going To path",path);

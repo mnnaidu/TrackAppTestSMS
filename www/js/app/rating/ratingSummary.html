@@ -1,14 +1,36 @@
 <ion-view view-title="My Credit Score">
 	<ion-content>
-        <div class="card" style="margin-top: 110px;">
-        
-          <div class=" item-image" ng-init="drawRatingGraph()">
+        <div class="card" >
+          
+         <div class="item item-divider list-head1">
+           Score
+         </div>
+          
+          <div class="item-image" ng-init="drawRatingGraph()">
             <svg id="ratingGraph"></svg>
           </div>
             
           <div class="item item-text-wrap">
             Your credit score is between <strong>600</strong> and <strong>800</strong> which is considered <strong>average</strong> by lending institutions.
           </div>
+        </div>
+        
+        <div class="list card">
+         <div class="item item-divider list-head1">
+            Loans Offered
+         </div>
+
+            <div class="item" data-ng-repeat="cf in creditOffers">
+                <img ng-src="{{cf.src}}" class= "loan-item"/>
+                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
+                <div class="item-content">
+                    <img src="{{cf.logo}}" class= "logo-item"/>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.desc}} </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            
         </div>
     </ion-content>
 </ion-view>

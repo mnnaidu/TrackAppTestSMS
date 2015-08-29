@@ -213,3 +213,33 @@ background: #D2F0F3;
     top: 10px;
     color: #428dba;
 }
+
+.loan-item {
+ float: left;
+ margin-left: 10px;
+ padding-right: 10px;   
+ height: 100px;
+ width: 100px; 
+}
+
+.logo-item {
+ float: left;
+ margin-left: 10px;
+ padding-right: 10px;   
+ height: 70px;
+ width: 160px; 
+}
+
+.item-content.loan{
+ margin-top:30px;
+}
+
+.item-loan-content {
+ font-size : 25px;
+}
+
+.item-loan-desc {
+ word-wrap: break-word;
+ overflow: visible;
+ white-space: normal;
+}
