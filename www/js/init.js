@@ -16,7 +16,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 
 			function setupDb(db, cb) {
 				db.get(function (err, res, body) {
-					$log.log(JSON.stringify(['before create db put', err, res, body]))
+					$log.log(JSON.stringify(['before create db put', err, res, body]));
 					db.put(function (err, res, body) {
 						db.get(cb)
 					})
@@ -24,7 +24,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			};
 
 			function setupViews(db, cb) {
-				var design = '_design/expenseTrackNew'
+				var design = '_design/expenseTrackNew';
 				db.put(design, {
 					views: {
 						expenseTrackListsNew: {
@@ -86,7 +86,21 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 								if (doc.trackType == 'remainder' && doc.dueDate && doc.dueDate.year && doc.dueDate.month && doc.dueDate.date) {
 									emit([doc.dueDate.year, doc.dueDate.month, doc.dueDate.date], doc);
 								}
-							}.toString(),
+							}.toString()
+						},
+                        expensesByAccount: {
+							map: function (doc) {
+                                if (doc.trackType == 'expense' && doc.date && doc.merchant && doc.amount) {
+									emit([doc.account], {
+                                        account: doc.account,
+                                        merchant: doc.merchant,
+                                        amount: doc.amount.value,
+                                        currency: doc.amount.currency,
+                                        accType: doc.accType,
+                                        date: doc.date
+                                    });
+				                }								
+							}.toString()
 						}
 					}
 				}, function () {
@@ -310,10 +324,24 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					'tab-dev': {
 						templateUrl: 'js/app/rating/ratingSummaryDummy.html',
 						controller: 'rating2Ctrl'
+			         }
+                }
+            }).state('app.expensesByAcc', {
+				url: '/expenseByAcc/:accNo',
+				views: {
+					'tab-expenses': {
+						templateUrl: 'js/app/expensesBy/expensesByAcc.html',
+						controller: 'expensesByAccCtrl'
+					}
+				}
+			}).state('app.expensesByDate', {
+				url: '/expenseByDate/:date',
+				views: {
+					'tab-expenses': {
+						templateUrl: 'js/app/expensesBy/expensesByDate.html',
+						controller: 'expensesByDateCtrl'
 					}
 				}
 			});
-    
-    
 		$urlRouterProvider.otherwise('/app/ratingna');
 	});

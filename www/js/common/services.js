@@ -109,6 +109,23 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 		$log.log('Error preparing timeSince: data.value: ', date.value);
 		return '';
 	}
+    
+     function getMonthYear(date) {
+        if(_.has(date, 'month') && _.has(date, 'year')) {
+           return (date.month +'-'+ date.year);  
+        }
+        $log.log('Error preparing getMonthYear: date.month| date.year: ', date);
+        return '';
+    }
+    
+    function getDateMonthYear(date) {
+        if(_.has(date, 'date') && _.has(date, 'month') && _.has(date, 'year')) {
+           return (date.date +'-'+ (dateutil.format(new Date(date.year, date.month, 1), 'M')) +'-'+ date.year);  
+        }
+        $log.log('Error preparing getDateMonthYear: date.month| date.year: ', date);
+        return '';
+    }
+    
 	var getExpensesGraphData = function () {
 		var data = [];
 		var deferred = $q.defer();
@@ -221,6 +238,7 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 							recentSpends.push({
 								merchant: merchant,
 								dateTime: timeSince(date),
+                                dateVal: getMonthYear(date),
 								expense: expense,
 								accType: accType,
 								ATM: accType === 'DEBIT-CASH'
@@ -284,8 +302,9 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 						var atmTransCount = _.has(value, 'atmTransCount') ? value.atmTransCount : 0;
 						if (account !== '') {
 							spendsByAccounts.push({
-								accName: 'ICICI ' + (accType === 'CREDIT' ? 'CRE' : 'DE') + 'DIT',
+								accName: 'ICICI ' + (accType === 'CREDIT' ? 'CRED' : 'DEB') + 'IT',
 								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
+                                accMask : account,
 								expenses: totalExpenses,
 								accType: accType,
 								ATM: accType === 'DEBIT-CASH',
@@ -391,12 +410,146 @@ function apiServicesFn($http, $timer, $q, $log, $timeout) {
 			});
 		return deferred.promise;
 	};
+    
+    
+    var getExpensesByAccData = function (accNo) {
+		var expensesByAccount = [];
+
+
+		var byAcc = false;
+		var deferred = $q.defer();
+		if (window.config) {
+			// Expenses By Accounts
+
+            /*config.db(["_design/expenseTrackNew", "_view"])(["expenseTrackByAccount", {
+                reduce : false,startkey : [accNo, startMer], endkey : [accNo,endMer] */
+            
+            config.db(["_design/expenseTrackNew", "_view"])(["expensesByAccount", {
+                key: [accNo]
+            }], function (err, response) {
+				if (err) {
+					$log.log('Error while querying DB', err);
+					deferred.reject(err);
+				} else {
+					var rows = _.has(response, 'rows') ? response.rows : [];
+					_.each(rows, function (row, i) {
+						//$log.log('spends by acc: row: ', row);
+						var key = _.has(row, 'key') ? row.key : [];
+						var value = _.has(row, 'value') ? row.value : {};
+						var account = _.has(value, 'account') ? value.account : '';
+						var accType = _.has(value, 'accType') ? value.accType : '';
+                        var merchant = _.has(value, 'merchant') ? value.merchant : '';
+						var amount = _.has(value, 'amount') ? value.amount : 0;
+                        var date = _.has(value, 'date') ? value.date : '';
+						var atmTransCount = _.has(value, 'atmTransCount') ? value.atmTransCount : 0;
+						if (account !== '') {
+							expensesByAccount.push({
+								accName: 'ICICI ' + (accType === 'CREDIT' ? 'CRED' : 'DEB') + 'IT',
+								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
+                                dateTime: getDateMonthYear(date),
+                                accMask: account,
+								expense: amount,
+                                merchant:merchant,
+								accType: accType,
+								ATM: accType === 'DEBIT-CASH',
+								ATMTrans: atmTransCount
+							});
+						}
+					});
+					$log.log('expensesByAccount', expensesByAccount);
+					byAcc = true;
+					callResolve();
+				}
+			});
+		} else {
+			$log.log('window.config not available');
+			deferred.reject('window.config not available');
+		}
+
+		function callResolve() {
+			if (byAcc) {
+				deferred.resolve({
+					data: {
+						expensesByAccount: expensesByAccount
+					}
+				});
+			}
+		}
+		return deferred.promise;
+	};
+    
+    var getExpensesByDateData = function (dateVal) {
+		var expensesByDate = [];
+		var byDate = false;
+        var monthYear = dateVal.split('-');
+        var month = typeof monthYear[0] != 'string' ? monthYear[0] : parseInt(monthYear[0]);
+        var year = typeof monthYear[1] != 'string' ? monthYear[1] : parseInt(monthYear[1]);
+		var deferred = $q.defer();
+		if (window.config) {
+			// Expenses By Date
+            config.db(["_design/expenseTrackNew", "_view"])(["expenseTrackListsNew", {
+                reduce : false,startkey : [year,month,0], endkey : [year,month,31] 
+            }], function (err, response) {
+				if (err) {
+					$log.log('Error while querying DB', err);
+					deferred.reject(err);
+				} else {
+					var rows = _.has(response, 'rows') ? response.rows : [];
+					_.each(rows, function (row, i) {
+						$log.log('spends by acc: row: ', row);
+						var key = _.has(row, 'key') ? row.key : [];
+						var value = _.has(row, 'value') ? row.value : {};
+						var account = _.has(value, 'account') ? value.account : '';
+						var accType = _.has(value, 'accType') ? value.accType : '';
+                        var merchant = _.has(value, 'merchant') ? value.merchant : '';
+                        var date = _.has(value, 'date') ? value.date : '';
+						var expense = _.has(value, 'amount') && _.has(value.amount, 'value') ? value.amount.value : 0;
+						var atmTransCount = _.has(value, 'atmTransCount') ? value.atmTransCount : 0;
+						if (account !== '') {
+							expensesByDate.push({
+								accName: 'ICICI ' + (accType === 'CREDIT' ? 'CRED' : 'DEB') + 'IT',
+								accNo: !_.isEmpty(account) ? account.substr(account.length - 4) : '',
+                                accMask: account,
+								expense: expense,
+                                merchant:merchant,
+                                dateTime: getDateMonthYear(date),
+								accType: accType,
+								ATM: accType === 'DEBIT-CASH',
+								ATMTrans: atmTransCount
+							});
+						}
+					});
+					$log.log('expensesByDate', expensesByDate);
+					byDate = true;
+					callResolve();
+				}
+			});
+		} else {
+			$log.log('window.config not available');
+			deferred.reject('window.config not available');
+		}
+
+		function callResolve() {
+			if (byDate) {
+				deferred.resolve({
+					data: {
+						expensesByDate: expensesByDate
+					}
+				});
+			}
+		}
+		return deferred.promise;
+
+	};
+    
 	return {
 		getExpensesGraphData: getExpensesGraphData,
 		getExpensesListData: getExpensesListData,
 		getExpensesBillsData: getExpensesBillsData,
 		getIncomeGraphData: getIncomeGraphData,
 		getIncomeListData: getIncomeListData,
-		getDevListData: getDevListData
+		getDevListData: getDevListData,
+        getExpensesByAccData: getExpensesByAccData,
+        getExpensesByDateData: getExpensesByDateData
 	};
 }
