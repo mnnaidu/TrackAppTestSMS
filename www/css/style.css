@@ -243,3 +243,8 @@ background: #D2F0F3;
  overflow: visible;
  white-space: normal;
 }
+
+.badge-margin {
+ margin-top: 10px;
+ margin-bottom: 10px;
+}

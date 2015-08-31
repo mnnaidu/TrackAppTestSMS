@@ -30,7 +30,18 @@ function composeRating($scope, $log, $timeout, $ionicPopup, apiServices,$locatio
 }
 
 function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$location  ) {
+    
     $log.log('rating1 ctrl called!');
+    
+    
+    $scope.showAlert = function(sender) {
+         var alertPopup = $ionicPopup.alert({
+            title: 'Endorse',
+            template: 'endorse requested to ' + sender
+        }).then(function(res) {
+            $scope.next('app/ratingsummarywithendorse');
+        });
+    }
     
     $scope.ccCards = [];
     $scope.ccCards.push( {
@@ -103,6 +114,12 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
         $log.log("Going To path",path);
         
         $location.path(path); // path not hash
+    }
+    
+    $scope.restart = function(path) {
+        $log.log('restart' , path);
+        $location.replace();
+        $scope.next(path);
     }
     
     $scope.drawRatingGraph = function () {

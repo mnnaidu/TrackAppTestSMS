@@ -256,6 +256,64 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
+			}).state('app.ratingNotAvailable', {
+				url: '/ratingna',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingNotAvailable.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingForm', {
+				url: '/ratingform',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingForm.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingForm2', {
+				url: '/ratingform2',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingForm2.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingReqestDone', {
+				url: '/ratingrequestdone',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingRequestDone.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingEndorse', {
+				url: '/ratingendorse',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingEndorse.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingSummaryWithEndorse', {
+				url: '/ratingsummarywithendorse',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingSummaryWithEndorse.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingSummaryDummy', {
+				url: '/ratingsummarydummy',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingSummaryDummy.html',
+						controller: 'rating2Ctrl'
+					}
+				}
 			});
-		$urlRouterProvider.otherwise('/app/expenses');
+    
+    
+		$urlRouterProvider.otherwise('/app/ratingna');
 	});

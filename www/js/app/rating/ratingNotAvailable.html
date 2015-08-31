@@ -1,0 +1,53 @@
+<ion-view view-title="My Credit Score">
+	<ion-content>
+
+        <div class="card" ng-click="next('app/ratingform')">
+          
+         <div class="item item-divider list-head1">
+           Congrats! you have earned starter badge. 
+         </div>
+          
+          <div class="item-image ">
+            <img src="img/start.svg" class="badge-margin" height="100" />
+          </div>
+
+          <div class="item item-text-wrap">
+            <h2>Tap to request for your credit score and get recommendation to improve your credit score, estimated complete in 5 minutes</h2>
+          </div>
+        </div>
+
+        <div class="card" ng-click="next('app/ratingform')">
+          
+         <div class="item item-divider list-head1">
+           Score 
+         </div>
+          
+          <div class="item-image">
+            <img src="img/NA1.svg" height="128"/>
+          </div>
+            
+          <div class="item item-text-wrap" ng-click="next('app/ratingform')">
+              <h2> Tap to get your credit score for Free and get recomendations to improve your credits </h2>
+          </div>
+            
+        </div>
+        
+        <div class="list card">
+         <div class="item item-divider list-head1">
+            Get your credit score to avail more loan offers.
+         </div>
+
+            <div class="item" data-ng-repeat="cf in creditOffers">
+                <img ng-src="{{cf.src}}" class= "loan-item"/>
+                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
+                <div class="item-content">
+                    <img src="{{cf.logo}}" class= "logo-item"/>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.desc}} </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            
+        </div>
+    </ion-content>
+</ion-view>

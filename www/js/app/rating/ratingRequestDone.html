@@ -1,47 +1,41 @@
 <ion-view view-title="My Credit Score">
 	<ion-content>
-        
-        <div class="card" ng-click="next('app/ratingendorse')"  >
+
+        <div class="card" ng-click="restart('app/ratingsummary')">
           
          <div class="item item-divider list-head1">
-           Congrats! you have earned credit badge
+           Congrats! you have earned junior badge. 
          </div>
           
           <div class="item-image">
-            <img src="img/credit.svg" height="128" width="128"/>
+            <img src="img/star.svg" height="128" width="128"/>
           </div>
 
-         <div class="item">
-              <img src="img/endorse.svg" class="fl"  height="40" width="40"/>
-             <strong class="item-text-wrap card-item"> Get endrosed from your peers.</strong>
+         <div class="item item-text-wrap">
+            <h2>Credit Score request forwarded to Cibil, rating will be available in next 2 working days.</h2>
           </div>
 
         </div>
-        
-        <div class="card" >
+
+        <div class="card" ng-click="next('app/ratingsummary')">
           
          <div class="item item-divider list-head1">
-           Score
+           Score 
          </div>
           
-          <div class="item-image" ng-init="drawRatingGraph()">
-            <svg id="ratingGraph"></svg>
+          <div class="item-image" >
+            <img src="img/hour.svg" height="128"/>
           </div>
             
           <div class="item item-text-wrap">
-            Your credit score is between <strong>600</strong> and <strong>800</strong> which is considered <strong>average</strong> by lending institutions.
+            <h2> Request done yesterday, tommorrow we will have your rating available. </h2>
           </div>
             
-          <div class="item">
-             <img src="img/consult.svg" class="fl" height="40" width="40"/>
-             <strong class="item-text-wrap card-item">Recommendations to improve</strong>
-              
-          </div>
         </div>
         
         <div class="list card">
          <div class="item item-divider list-head1">
-            Loans Offered
+            loans offered
          </div>
 
             <div class="item" data-ng-repeat="cf in creditOffers">
