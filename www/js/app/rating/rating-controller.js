@@ -39,7 +39,7 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
             title: 'Endorse',
             template: 'endorse requested to ' + sender
         }).then(function(res) {
-            $scope.next('app/ratingsummarywithendorse');
+            //$scope.next('app/ratingsummarywithendorse');
         });
     }
     

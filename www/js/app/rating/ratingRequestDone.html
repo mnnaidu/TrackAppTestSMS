@@ -1,7 +1,15 @@
 <ion-view view-title="My Credit Score">
 	<ion-content>
 
-        <div class="card" ng-click="restart('app/ratingsummary')">
+        <div class="card">
+            <a class="item item-avatar" href="#" >
+                <img src="img/doris.jpg">
+                <h2>Doris</h2>
+                <p>endorsed you and she knows you for 3 years </p>
+            </a>
+        </div>
+        
+        <div class="card" ng-click="next('app/recomendations3')">
           
          <div class="item item-divider list-head1">
            Congrats! you have earned junior badge. 
@@ -12,15 +20,15 @@
           </div>
 
          <div class="item item-text-wrap">
-            <h2>Credit Score request forwarded to Cibil, rating will be available in next 2 working days.</h2>
+            <h2>adjust the budget to reduce your credit usage more... </h2>
           </div>
-
+            
         </div>
 
         <div class="card" ng-click="next('app/ratingsummary')">
           
          <div class="item item-divider list-head1">
-           Score 
+           Cibil Score 
          </div>
           
           <div class="item-image" >
@@ -28,7 +36,7 @@
           </div>
             
           <div class="item item-text-wrap">
-            <h2> Request done yesterday, tommorrow we will have your rating available. </h2>
+            <h2>Cibil Credit Score requested to CIBIL, rating will be available in next 2 working days.</h2>
           </div>
             
         </div>
@@ -47,8 +55,6 @@
                     <div class="clear"></div>
                 </div>
             </div>
-
-            
         </div>
     </ion-content>
 </ion-view>

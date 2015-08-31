@@ -278,6 +278,14 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
+			}).state('app.ratingNotAvailable1', {
+				url: '/ratingna1',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingNotAvailable1.html',
+						controller: 'rating2Ctrl'
+					}
+				}
 			}).state('app.ratingForm', {
 				url: '/ratingform',
 				views: {
@@ -318,11 +326,27 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
-			}).state('app.ratingSummaryDummy', {
-				url: '/ratingsummarydummy',
+			}).state('app.recomendations', {
+				url: '/recomendations',
 				views: {
 					'tab-dev': {
-						templateUrl: 'js/app/rating/ratingSummaryDummy.html',
+						templateUrl: 'js/app/rating/recomendations.html',
+						controller: 'rating2Ctrl'
+			         }
+                }
+            }).state('app.recomendations2', {
+				url: '/recomendations2',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/recomendations2.html',
+						controller: 'rating2Ctrl'
+			         }
+                }
+            }).state('app.recomendations3', {
+				url: '/recomendations3',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/recomendations3.html',
 						controller: 'rating2Ctrl'
 			         }
                 }

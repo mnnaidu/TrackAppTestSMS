@@ -248,3 +248,9 @@ background: #D2F0F3;
  margin-top: 10px;
  margin-bottom: 10px;
 }
+
+.item-recommend-avatar {
+  float: left;
+  padding-right: 10px;
+      
+}
