@@ -1,0 +1,24 @@
+<ion-view view-title="Expenses By Month">
+	<ion-content>
+		<section class="list-container">
+			<div class="list-heading">Spends By {{month}} - {{year}} </div>
+			<div class="list" data-ng-if="expensesByDate.length > 0">
+				<div class="list-item" data-ng-repeat="ebd in expensesByDate">
+					<div class="cat-icon cc txt-center fl fa fa-credit-card"></div>
+					<div class="list-item-details fl">
+						<div class="list-item-place-date fl">
+                            <div class="list-item-place">{{ebd.merchant}}</div>
+							<div class="list-item-date">{{ebd.dateTime}} <span>{{ebd.accMask}}</span> </div>
+						</div>
+						<div class="list-item-amount fr"><i class="fa fa-inr"></i> {{ebd.expense}}</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+            </div>
+			<div class="list" data-ng-if="expensesByDate.length < 1">
+				<data class="lits-item" style="margin:10px;">Oops! Recent spends not found.</data>
+			</div>
+        </section>
+	</ion-content>
+</ion-view>

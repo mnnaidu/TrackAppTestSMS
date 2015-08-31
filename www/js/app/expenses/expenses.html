@@ -8,7 +8,7 @@
 			<div class="list" data-ng-if="recentSpends.length > 0">
 				<div class="list-item" data-ng-repeat="rs in recentSpends">
 					<div class="cat-icon txt-center fl fa" data-ng-class="getClassNames(rs.accType, rs.ATM)"></div>
-					<div class="list-item-details fl">
+					<div class="list-item-details fl" ng-click="nextBy('app/expenseByDate/{{rs.dateVal}}')">
 						<div class="list-item-place-date fl">
 							<div class="list-item-date">{{rs.dateTime}}</div>
 							<div class="list-item-place">{{rs.merchant}}</div>
@@ -65,7 +65,7 @@
 			<div class="list" data-ng-if="spendsByAccount.length > 0">
 				<div class="list-item" data-ng-repeat="sba in spendsByAccount">
 					<div class="cat-icon txt-center fl fa no-border-radius" data-ng-class="getClassNames(sba.accType, sba.ATM)"></div>
-					<div class="list-item-details fl">
+					<div class="list-item-details fl" ng-click="nextBy('app/expenseByAcc/{{sba.accMask}}')">
 						<div class="list-item-place-date fl">
 							<div class="list-item-place">{{sba.accName}} <span>{{sba.accNo}}</span></div>
 							

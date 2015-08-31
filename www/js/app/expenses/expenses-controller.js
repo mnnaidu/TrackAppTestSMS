@@ -1,8 +1,8 @@
 'use strict';
 angular.module('expensesController', [])
-	.controller('expensesCtrl', ['$scope', '$log', '$timeout', 'apiServices', 'couchbase', expensesCtrlFn]);
+	.controller('expensesCtrl', ['$scope', '$log', '$timeout', 'apiServices', 'couchbase', '$location', expensesCtrlFn]);
 
-function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
+function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $location) {
 	$log.log('expensesCtrl called!');
 	$scope.expensesGraphData = [];
 	// initially load empty graph
@@ -84,6 +84,11 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase) {
 		renderExpensesGraph();
 		renderExpensesList();
 	});
+    
+     $scope.nextBy = function(path) {
+        $log.log("Going To path",path);
+        $location.path(path); // path not hash
+    }
 
 	function renderExpensesGraphFn() {
 		width = screen.height,
