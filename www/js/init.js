@@ -350,6 +350,14 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 			         }
                 }
+            }).state('app.recomendationsAll', {
+				url: '/recomendationsAll',
+				views: {
+					'tab-recomendation': {
+						templateUrl: 'js/app/rating/recomendations3.html',
+						controller: 'rating2Ctrl'
+			         }
+                }
             }).state('app.expensesByAcc', {
 				url: '/expenseByAcc/:accNo',
 				views: {
