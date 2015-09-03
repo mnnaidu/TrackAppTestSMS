@@ -36,9 +36,9 @@ function incomeCtrlFn($scope, $log, $timeout, apiServices) {
 			}
 			var margin = {
 					top: 30,
-					left: 10,
+					left: 30,
 					bottom: 30,
-					right: 10
+					right: 30
 				},
 				padding = 30,
 				width = window.innerWidth - margin.left - margin.right,
@@ -70,9 +70,10 @@ function incomeCtrlFn($scope, $log, $timeout, apiServices) {
 			x.domain(dataSet.barData.map(function (d) {
 				return d.month;
 			}));
-			y.domain([0, d3.max(dataSet.barData, function (d) {
+			var maxValue = d3.max(dataSet.barData, function (d) {
 				return d.income;
-			})]);
+			});
+			y.domain([0, maxValue]);
 
 			graph.append('g')
 				.attr('class', 'axis x-axis')
@@ -137,7 +138,21 @@ function incomeCtrlFn($scope, $log, $timeout, apiServices) {
 					return y(d.income) - 10;
 				});
 
-
+			graph.selectAll('.line')
+				.data([46000 * Math.random(0.2, 0.8)])
+				.enter()
+				.append('line')
+				.attr({
+					'x1': 0,
+					'y1': function (d) {
+						return y(d);
+					},
+					'x2': width,
+					'y2': function (d) {
+						return y(d);
+					},
+					'class': 'budget-line'
+				});
 		});
 
 		apiServices.getIncomeListData().then(function (response) {

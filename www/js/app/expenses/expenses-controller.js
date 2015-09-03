@@ -56,7 +56,7 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 		renderExpensesGraph();
 		renderExpensesList();
 	}, 2000);
-	var width, height, screenRatio, realWidth, realHeight, margin, padding, x, y, xAxis, yAxis, graph, color;
+	var width, height, screenRatio, realWidth, realHeight, margin, padding, maxValue, x, y, xAxis, yAxis, graph, color;
 	var renderExpensesGraph = function() {
 		apiServices.getExpensesGraphData().then(function(response){
 			$scope.expensesGraphData = _.has(response, 'data') ? response.data : [];
@@ -115,9 +115,9 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 		}
 		margin = {
 				top: 30,
-				left: 10,
+				left: 30,
 				bottom: 30,
-				right: 10
+				right: 30
 			},
 			padding = 30,
 			width = window.innerWidth - margin.left - margin.right,
@@ -150,9 +150,10 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 		x.domain($scope.expensesGraphData.map(function (d) {
 			return d.month;
 		}));
-		y.domain([0, d3.max($scope.expensesGraphData, function (d) {
+		maxValue = d3.max($scope.expensesGraphData, function (d) {
 			return d.expenses;
-		})]);
+		});
+		y.domain([0, maxValue]);
 
 		graph.append('g')
 			.attr('class', 'axis x-axis')
@@ -217,6 +218,22 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 			.ease("linear")
 			.attr('y', function (d) {
 				return y(d.expenses) - 10;
+		});
+
+		graph.selectAll('.line')
+			.data([maxValue * Math.random(0.2, 0.8)])
+			.enter()
+			.append('line')
+			.attr({
+				'x1': 0,
+				'y1': function (d) {
+					return y(d);
+				},
+				'x2': width,
+				'y2': function (d) {
+					return y(d);
+				},
+				'class': 'budget-line'
 			});
 	}
 
@@ -224,9 +241,10 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 		x.domain($scope.expensesGraphData.map(function (d) {
 			return d.month;
 		}));
-		y.domain([0, d3.max($scope.expensesGraphData, function (d) {
+		maxValue = d3.max($scope.expensesGraphData, function (d) {
 			return d.expenses;
-		})]);
+		});
+		y.domain([0, maxValue]);
 
 		var graph = d3.select('.graph.expenses');
 

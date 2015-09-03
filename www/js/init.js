@@ -57,7 +57,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 									response.merchant = values[i].merchant;
 									response.account = values[i].account;
 									response.accType = values[i].accType;
-									if(values[i].accType === 'DEBIT-CASH') {
+									if (values[i].accType === 'DEBIT-CASH') {
 										response.atmTransCount += 1;
 									}
 								}
@@ -88,18 +88,18 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 								}
 							}.toString()
 						},
-                        expensesByAccount: {
+						expensesByAccount: {
 							map: function (doc) {
-                                if (doc.trackType == 'expense' && doc.date && doc.merchant && doc.amount) {
+								if (doc.trackType == 'expense' && doc.date && doc.merchant && doc.amount) {
 									emit([doc.account], {
-                                        account: doc.account,
-                                        merchant: doc.merchant,
-                                        amount: doc.amount.value,
-                                        currency: doc.amount.currency,
-                                        accType: doc.accType,
-                                        date: doc.date
-                                    });
-				                }								
+										account: doc.account,
+										merchant: doc.merchant,
+										amount: doc.amount.value,
+										currency: doc.amount.currency,
+										accType: doc.accType,
+										date: doc.date
+									});
+								}
 							}.toString()
 						}
 					}
@@ -210,7 +210,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					}
 				}
 			})
-            .state('app.rating', {
+			.state('app.rating', {
 				url: '/rating',
 				views: {
 					'tab-dev': {
@@ -219,7 +219,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					}
 				}
 			})
-            .state('app.rating1', {
+			.state('app.rating1', {
 				url: '/rating1',
 				views: {
 					'tab-dev': {
@@ -228,7 +228,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					}
 				}
 			})
-            .state('app.rating1_1', {
+			.state('app.rating1_1', {
 				url: '/rating1_1',
 				views: {
 					'tab-dev': {
@@ -237,7 +237,7 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					}
 				}
 			})
-            .state('app.rating2', {
+			.state('app.rating2', {
 				url: '/rating2',
 				views: {
 					'tab-dev': {
@@ -245,8 +245,8 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
-			}) 
-            .state('app.rating3', {
+			})
+			.state('app.rating3', {
 				url: '/rating3',
 				views: {
 					'tab-dev': {
@@ -332,33 +332,33 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					'tab-dev': {
 						templateUrl: 'js/app/rating/recomendations.html',
 						controller: 'rating2Ctrl'
-			         }
-                }
-            }).state('app.recomendations2', {
+					}
+				}
+			}).state('app.recomendations2', {
 				url: '/recomendations2',
 				views: {
 					'tab-dev': {
 						templateUrl: 'js/app/rating/recomendations2.html',
 						controller: 'rating2Ctrl'
-			         }
-                }
-            }).state('app.recomendations3', {
+					}
+				}
+			}).state('app.recomendations3', {
 				url: '/recomendations3',
 				views: {
 					'tab-dev': {
 						templateUrl: 'js/app/rating/recomendations3.html',
 						controller: 'rating2Ctrl'
-			         }
-                }
-            }).state('app.recomendationsAll', {
+					}
+				}
+			}).state('app.recomendationsAll', {
 				url: '/recomendationsAll',
 				views: {
 					'tab-recomendation': {
 						templateUrl: 'js/app/rating/recomendations3.html',
 						controller: 'rating2Ctrl'
-			         }
-                }
-            }).state('app.expensesByAcc', {
+					}
+				}
+			}).state('app.expensesByAcc', {
 				url: '/expenseByAcc/:accNo',
 				views: {
 					'tab-expenses': {

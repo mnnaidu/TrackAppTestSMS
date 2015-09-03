@@ -44,7 +44,7 @@
 	shape-rendering: crispEdges;
 }
 
-.graph.expenses .axis path, .graph.income .axis path {
+.graph.expenses .axis path, .graph.income .axis path, .graph.expenses .budget-line, .graph.income .budget-line {
 	fill: none;
 	stroke: #000;
 	shape-rendering: crispEdges;
@@ -113,7 +113,7 @@
 }
 
 /*.list-item:nth-child(even) {
-background: #D2F0F3;
+	background: #D2F0F3;
 }*/
 
 .cat-icon {
@@ -188,7 +188,7 @@ background: #D2F0F3;
 }
 
 .list-item-amount.acc {
-	padding: calc(10% - 15px) 0;
+	padding: 11.5px 0;
 }
 
 .list-head1 {
@@ -197,60 +197,60 @@ background: #D2F0F3;
 }
 
 .card-icon {
-    font-size: 24px;
-    color: #428dba;
+	font-size: 24px;
+	color: #428dba;
 }
 
 .button.next-button {
-    background-color:#428dba;
+	background-color:#428dba;
 }
 
 .card-item {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .radio-icon.card-select {
-    top: 10px;
-    color: #428dba;
+	top: 10px;
+	color: #428dba;
 }
 
 .loan-item {
- float: left;
- margin-left: 10px;
- padding-right: 10px;   
- height: 100px;
- width: 100px; 
+	float: left;
+	margin-left: 10px;
+	padding-right: 10px;
+	height: 100px;
+	width: 100px;
 }
 
 .logo-item {
- float: left;
- margin-left: 10px;
- padding-right: 10px;   
- height: 70px;
- width: 160px; 
+	float: left;
+	margin-left: 10px;
+	padding-right: 10px;
+	height: 70px;
+	width: 160px;
 }
 
 .item-content.loan{
- margin-top:30px;
+	margin-top:30px;
 }
 
 .item-loan-content {
- font-size : 25px;
+	font-size : 25px;
 }
 
 .item-loan-desc {
- word-wrap: break-word;
- overflow: visible;
- white-space: normal;
+	word-wrap: break-word;
+	overflow: visible;
+	white-space: normal;
 }
 
 .badge-margin {
- margin-top: 10px;
- margin-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .item-recommend-avatar {
-  float: left;
-  padding-right: 10px;
-      
+	float: left;
+	padding-right: 10px;
+
 }
