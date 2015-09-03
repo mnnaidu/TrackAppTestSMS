@@ -1,0 +1,52 @@
+<ion-view view-title="My Credit Score">
+	<ion-content>
+
+        <div class="card" >
+         <div class="item">
+              <img src="img/endorse.svg" class="fl"  height="40" width="40"/>
+             <strong class="item-text-wrap card-item"> 5 peoples endorsed you.</strong>
+          </div>
+        </div>
+        <div class="card" ng-click="next('app/recomendations4')">
+        
+         <div class="item item-divider list-head1">
+          My Credit Profile   
+         </div>
+          
+          <div class="item item-text-wrap">
+              <img src="img/credit.svg"  class="item-recommend-avatar" height="50"  /><b>Crediter 1100 points</b>
+              <div class="card-item" >your expenses can be limited by setting a budget.</div>
+          </div>
+        </div>
+            
+        <div class="card" ng-click="next('app/ratingform')">
+          
+             <div class="item item-divider list-head1">
+               CIBIL Score 
+             </div>
+
+             <div class="item item-text-wrap">
+                  <img src="img/NA1.svg" class="item-recommend-avatar" height="60" /> 
+                  <div class="card-item" >Request for your credit score from cibil and get more recommendations to improve your credit score, reduce EMI, many more ... </div>
+              </div>
+        
+        </div>
+        
+        <div class="list card" >
+         <div class="item item-divider list-head1">
+           loan offered for Crediter Profile
+         </div>
+            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
+                <img ng-src="{{cf.src}}" class= "loan-item"/>
+                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
+                <div class="item-content">
+                    <img src="{{cf.logo}}" class= "logo-item"/>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.desc}} </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            
+        </div>
+    </ion-content>
+</ion-view>

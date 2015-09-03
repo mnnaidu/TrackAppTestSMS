@@ -1,0 +1,66 @@
+<ion-view view-title="Sigma Indicator">
+	<ion-content>
+
+        <div class="card">
+          
+        <div class="card" ng-click="next('app/endorse')">
+            <a class="item item-avatar" href="#" >
+                <img src="img/su.jpg">
+                <h2>Sudhakar</h2>
+                <p>request for an endrosement </p>
+            </a>
+        </div>
+
+  
+         <div class="item item-divider list-head1">
+           Sigma Indicator
+         </div>
+          
+          <div class="item item-text-wrap">
+              <img src="img/cup.svg"  class="item-recommend-avatar" height="70"  /><b>you are beginner rated "B"</b><p> since 1 month </p>
+              <div class="card-item">You can avail loans from 10,000 - 20,000 at a considerable rate of interest.</div>
+          </div>
+            
+        </div>
+        
+        
+        <div class="card" ng-click="next('app/newbudget')">
+          
+            <div class="item item-divider list-head1">
+                Sigma Credit Profile   
+            </div>
+          
+            <div class="item item-text-wrap">
+             <svg height="100" width="70" class="item-recommend-avatar"> 
+                 <a transform="translate(30,30)">
+                <g><circle fill="#f60" r="30"></circle></g>
+                <g><clippath id="g-clip">
+                        <rect height="50" id="g-clip-rect" width="100" x="-50" y="-60">
+                        </rect>
+                    </clippath>
+                    <circle clip-path="url(#g-clip)" fill="#fff" r="27"></circle>
+                </g>
+                 </a>
+              </svg>
+              <div class="card-item"> CIBIL Credit Score ahead. Add your budget for the current month. </div>
+          </div>
+        </div>
+
+        <div class="card">
+        <div class="list card">
+             <div class="item item-divider list-head1">
+                loans offered
+             </div>
+
+            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
+                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
+                <div class="item-content">
+                    <img src="{{cf.logo}}" class= "logo-item"/>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.desc}} </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

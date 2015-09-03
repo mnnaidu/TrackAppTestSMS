@@ -1,0 +1,33 @@
+<ion-view view-title="Sigma Indicator">
+	<ion-content>
+        
+    <div class="card">
+
+     <div class="item item-divider list-head1">
+       Sigma Indicator
+     </div>
+
+      <div class="item item-text-wrap">
+          <img src="img/payer.svg"  class="item-recommend-avatar" height="80"  /><b>you are payer, rated "A"</b><p> very recently </p>
+          <div class="card-item">avail loans from 50,000 - 1,50,000 at a low rate of interest</div>
+      </div>
+
+    </div>
+   
+    <div class="card">
+        <div class="list card">
+         <div class="item item-divider list-head1">
+            Loans Offered
+         </div>
+
+            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
+                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
+                <div class="item-content">
+                    <img src="{{cf.logo}}" class= "logo-item"/>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.desca}} </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+    </div>
+    </ion-content>
+</ion-view>

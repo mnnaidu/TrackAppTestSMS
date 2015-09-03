@@ -1,0 +1,41 @@
+<ion-view view-title="Sigma Indicator">
+
+    <ion-content>
+        <div class="list">
+          <label class="item">
+                <b>frequency of spending >1000 </b>
+          </label>
+            
+          <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+              Daily
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+
+          <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+              2 days once
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+
+         <label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+             3 days
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+
+          <label class="item item-input">
+            <input type="number" placeholder="others">
+          </label>        
+
+      </div>
+        
+          <button class="button next-button button-block button-positive" ng-click="showAlertAndNext('Register','Thank u, we will asses your expense pattern','app/ratingrequestdone1')" >Done</button>
+    </ion-content>
+</ion-view>
