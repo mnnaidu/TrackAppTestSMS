@@ -1,53 +1,55 @@
-<ion-view view-title="My Credit Score">
+<ion-view view-title="Sigma Indicator">
 	<ion-content>
 
-        <div class="card" ng-click="next('app/ratingendorse')">
-         <div class="item">
-              <img src="img/endorse.svg" class="fl"  height="40" width="40"/>
-             <strong class="item-text-wrap card-item"> Get endrosed from your friends.</strong>
-          </div>
-        </div>
-        
-        <div class="card" ng-click="next('app/recomendations')">
-          
-         <div class="item item-divider list-head1">
-           Welcome! you have earned starter badge. 
-         </div>
-          
-          <div class="item-image ">
-            <img src="img/start.svg" class="badge-margin" height="100" />
-          </div>
-
-          <div class="item item-text-wrap">
-            <h2>tap to get basic recommendations to earn more credit score</h2>
-          </div>
-        </div>
 
         <div class="card" ng-click="next('app/ratingform')">
           
          <div class="item item-divider list-head1">
-           Cibil Score 
+           Sigma Indicator 
          </div>
           
-          <div class="item-image">
-            <img src="img/NA1.svg" height="128"/>
-          </div>
-            
-          <div class="item item-text-wrap" ng-click="next('app/ratingform')">
-              <h2>Request for your credit score from cibil and get more recommendation to improve your credit score, estimated 5 minutes to complete</h2>
-          </div>
-            
-        </div>
-        
-        <div class="list card" ng-click="next('app/recomendations')">
-         <div class="item item-divider list-head1">
-           loan offered
-         </div>
          <div class="item item-text-wrap">
-            ICICI, HDFC, .. 2 more banks are ready to give loans, go to recommendations and improve your credit points, to avail them quickly.
+              <img src="img/NA1.svg" class="item-recommend-avatar" height="60" /> <b> Undefined </b>
+              <div class="card-item" >Complete your sigma profile to get your free sigma incators</div>
+          </div>
+        
+        </div>
+
+        <div class="card" ng-click="next('app/ratingendorse')">
+            
+            <div class="item item-divider list-head1">
+                Recommended Action
+             </div>
+            
+            <div class="item"> 
+              <img src="img/endorse.svg" class="fl"  height="40" width="40"/>
+             <strong class="item-text-wrap card-item"> Get endorse from your friends.</strong>
+            </div>
+        </div>
+
+        <div class="card" ng-click="next('app/ratingform')">
+          
+            <div class="item item-divider list-head1">
+                Sigma Credit Profile   
+            </div>
+          
+            <div class="item item-text-wrap">
+             <svg height="100" width="70" class="item-recommend-avatar"> 
+                 <a transform="translate(30,30)">
+                <g><circle fill="red" r="30"></circle></g>
+                <g><clippath id="g-clip">
+                        <rect height="50" id="g-clip-rect" width="100" x="-50" y="-30">
+                        </rect>
+                    </clippath>
+                    <circle clip-path="url(#g-clip)" fill="#fff" r="27"></circle>
+                </g>
+                 </a>
+              </svg>
+              <div class="card-item" >Complete your sigma profile to get your free sigma incators</div>
+          </div>
         </div>
 
             
-        </div>
+    </div>
     </ion-content>
-</ion-view>
+</ion-view>r

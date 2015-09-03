@@ -1,6 +1,9 @@
-<ion-view view-title="Identity Document">
+<ion-view view-title="Sigma Indicator">
 	<ion-content>
-          <label class="item item-radio">
+          <label class="item">
+            <b> Identity Document </b>
+          </label>
+         <label class="item item-radio">
                 <input type="radio" name="group">
                 <div class="item-content">
                 PAN
@@ -24,6 +27,6 @@
           <label class="item item-input">
             <input type="text" placeholder="identity document number">
           </label>
-            <button class="button next-button button-block button-positive" ng-click="next('app/ratingrequestdone')" >Register</button>
+            <button class="button next-button button-block button-positive" ng-click="showAlertAndNext('Register','Thank u, we successfully calculated your sigma indicator based on the analysed your financial sms','app/ratingrequestdone')" >Register</button>
     </ion-content>
 </ion-view>

@@ -1,4 +1,4 @@
-<ion-view view-title="My Credit Score">
+<ion-view view-title="Sigma Indicator">
 	<ion-content>
 
         <div class="card">
@@ -9,45 +9,48 @@
             </a>
         </div>
         
-        <div class="card" ng-click="next('app/recomendations3')">
+        <div class="card">
           
          <div class="item item-divider list-head1">
-           Congrats! you have earned star badge. 
+           Sigma Indicator
          </div>
           
-          <div class="item-image">
-            <img src="img/star.svg" height="128" width="128"/>
-          </div>
-
-         <div class="item item-text-wrap">
-            <h2>adjust the budget to reduce your credit usage more... </h2>
-          </div>
-            
-        </div>
-
-        <div class="card" ng-click="next('app/ratingsummary')">
-          
-         <div class="item item-divider list-head1">
-           Cibil Score 
-         </div>
-          
-          <div class="item-image" >
-            <img src="img/hour.svg" height="128"/>
-          </div>
-            
           <div class="item item-text-wrap">
-            <h2>Cibil Credit Score requested to CIBIL, rating will be available in next 2 working days.</h2>
+              <img src="img/cup.svg"  class="item-recommend-avatar" height="70"  /><b>you are beginner rated "B"</b>
+              <div class="card-item">You can avail loans from 10,000 - 20,000 at a considerable rate of interest.</div>
           </div>
             
         </div>
         
-        <div class="list card">
-         <div class="item item-divider list-head1">
-            loans offered
-         </div>
+        <div class="card" ng-click="next('app/expensepattern')">
+          
+            <div class="item item-divider list-head1">
+                Sigma Credit Profile   
+            </div>
+          
+            <div class="item item-text-wrap">
+             <svg height="100" width="70" class="item-recommend-avatar"> 
+                 <a transform="translate(30,30)">
+                <g><circle fill="#f60" r="30"></circle></g>
+                <g><clippath id="g-clip">
+                        <rect height="50" id="g-clip-rect" width="100" x="-50" y="-40">
+                        </rect>
+                    </clippath>
+                    <circle clip-path="url(#g-clip)" fill="#fff" r="27"></circle>
+                </g>
+                 </a>
+              </svg>
+              <div class="card-item" >Complete your credit profile by updating your expense pattern.</div>
+          </div>
+        </div>
 
-            <div class="item" data-ng-repeat="cf in creditOffers">
-                <img ng-src="{{cf.src}}" class= "loan-item"/>
+        <div class="card">
+        <div class="list card">
+             <div class="item item-divider list-head1">
+                loans offered
+             </div>
+
+            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
                 <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
                 <div class="item-content">
                     <img src="{{cf.logo}}" class= "logo-item"/>
@@ -56,5 +59,8 @@
                 </div>
             </div>
         </div>
+        
+        </div>
+
     </ion-content>
 </ion-view>

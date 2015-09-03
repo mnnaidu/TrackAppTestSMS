@@ -1,8 +1,9 @@
 'use strict';
 angular.module('ratingController', [])
-	.controller('ratingCtrl', ['$scope', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', composeRating])
-    .controller('rating1Ctrl', ['$scope', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', composeRating1])
-    .controller('rating2Ctrl', ['$scope', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', composeRating1]);
+	.controller('ratingCtrl', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state', composeRating])
+    .controller('rating1Ctrl', ['$scope', '$ionicModal','$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state',composeRating1])
+    .controller('rating2Ctrl', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state',composeRating1])    
+    .controller('appController', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state',composeRating1]);
 
 
 function composeRating($scope, $log, $timeout, $ionicPopup, apiServices,$location) {
@@ -29,15 +30,51 @@ function composeRating($scope, $log, $timeout, $ionicPopup, apiServices,$locatio
     }
 }
 
-function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$location  ) {
+function composeRating1($scope, $ionicModal, $log, $timeout, $ionicPopup, apiServices,$location,$state  ) {
     
     $log.log('rating1 ctrl called!');
     
+    // Load the modal from the given template URL
+    $ionicModal.fromTemplateUrl('js/app/rating/welcomePopup.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+        $timeout($scope.showModal, 500);
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });
+   
+    $scope.title = 'Sigma Indicator';
     
-    $scope.showAlert = function(sender) {
+    $scope.showModal = function() {
+        if($location.path() == '/app/ratingna') {
+            $scope.modal.show();
+        }else {
+            $log.log('modal ctrl called!3',$location.path()); 
+        }
+    }
+    
+   $scope.$on('modal.removed', function() {
+      $log.log('removed called');
+       $state.go('app.ratingNotAvailable');
+    });
+    
+   
+    $scope.showAlertAndNext = function(title,msg,path) {
          var alertPopup = $ionicPopup.alert({
-            title: 'Endorse',
-            template: 'endorse requested to ' + sender
+            title: title,
+            template: msg
+        }).then(function(res) {
+            $scope.next(path);
+        });
+    }
+    
+    
+    $scope.showAlert = function(title,msg) {
+         var alertPopup = $ionicPopup.alert({
+            title: title,
+            template: msg
         }).then(function(res) {
             //$scope.next('app/ratingsummarywithendorse');
         });
@@ -85,7 +122,9 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
         amount : '2,00,000',
         interest :  '20yrs',
         icon : 'fa-home',
-        desc: 'offers you personal loan of 1,00,000 @ 10% tenure 3 - 4yrs processed in 1 day',
+        desc: 'offers you personal loan @18% tenure 3 - 6months processed in 1 day',
+        descb1: 'offers you personal loan @12% tenure 3 - 6months processed in 1 day',
+        desca: 'offers you personal loan @9% tenure 3 - 6months processed in 1 day',
         src : 'img/checked1.png',
         logo : 'img/icici.svg'
     });
@@ -95,7 +134,9 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
         osAmount : '40,000',
         tenure :  '1yr',
         icon : 'fa-car',
-        desc: 'offers you personal loan of 90,000 @ 13% tenure 2 - 3yrs processed in 2 days',
+        desc: 'offers you personal loan @20% tenure 3 - 6months processed in 2 days',
+        descb1: 'offers you personal loan @15% tenure 3 - 6months processed in 2 days',
+        desca: 'offers you personal loan @10% tenure 3 - 6months processed in 2 days',
         src : 'img/checked1.png',
         logo : 'img/hdfc.svg'
     });
@@ -105,7 +146,9 @@ function composeRating1($scope, $log, $timeout, $ionicPopup, apiServices,$locati
         osAmount : '40,000',
         tenure :  '1yr',
         icon : 'fa-car',
-        desc: 'get more endorse from your friends, to avail personal loan of 80,000 @ 13% tenure 2 - 3yrs processed in 2 days',
+        desc: 'get more endorse from your friends, to avail personal loan @ 22% tenure 12m - 1yr processed in 2 days',
+        descb1: 'get more endorse from your friends, to avail personal loan @ 14% tenure 12m - 1yr processed in 2 days',
+        desca: 'get more endorse from your friends, to avail personal loan @ 9% tenure 12m - 1yr processed in 2 days',
         src : 'img/addMore.png',
         logo : 'img/kotak.svg'
     });

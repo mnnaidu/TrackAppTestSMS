@@ -1,25 +1,35 @@
-<ion-view view-title="My Credit Score">
+<ion-view view-title="Sigma Indicator">
 	<ion-content>
         
-        <div class="card" ng-click="next('app/ratingendorse')"  >
+        <div class="card" ng-click="next('app/loanpay')">
+            
+            <div class="item item-divider list-head1">
+                Recommended Action
+             </div>
+            
+            <div class="item item-text-wrap"> 
+              <b>repay of last loan from icici outstanding 4,000 right away, and improve your sigma score</b>
+            </div>
+        </div>
+
+        <div class="card">
           
+
          <div class="item item-divider list-head1">
-           Congrats! you have earned credit badge
+           Sigma Indicator
          </div>
           
-          <div class="item-image">
-            <img src="img/credit.svg" height="128" width="128"/>
+          <div class="item item-text-wrap">
+              <img src="img/star.svg"  class="item-recommend-avatar" height="80"  /><b>you are spender, rated "B+"</b><p>  recently 3days </p>
+              <div class="card-item">avail loans from 30,000 - 50,000, we able to offer lower rates loans based on your rating </div>
           </div>
-
-         <div class="item">
-             <img src="img/endorse.svg" class="fl"  height="40" width="40"/>
-             <strong class="item-text-wrap card-item"> 5 peoples endorsed you </strong>
-          </div>
-
+            
         </div>
-        
+
+
         <div class="card" ng-click="next('app/recomendations3')" >
           
+
          <div class="item item-divider list-head1">
            Cibil Score
          </div>
@@ -34,27 +44,27 @@
             
           <div class="item">
              <img src="img/consult.svg" class="fl" height="40" width="40"/>
-             <strong class="item-text-wrap card-item">car loans need attention to avoid late fee more..</strong>
+             <strong class="item-text-wrap card-item">check our listed tips to reduce EMI</strong>
               
           </div>
         </div>
         
+
+        
+        <div class="card">
         <div class="list card">
          <div class="item item-divider list-head1">
             Loans Offered
          </div>
 
-            <div class="item" data-ng-repeat="cf in creditOffers">
-                <img ng-src="{{cf.src}}" class= "loan-item"/>
+            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
                 <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
                 <div class="item-content">
                     <img src="{{cf.logo}}" class= "logo-item"/>
-                    <div class="list-item-place  item-loan-desc fl"> {{cf.desc}} </div>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.descb1}} </div>
                     <div class="clear"></div>
                 </div>
             </div>
-
-            
         </div>
     </ion-content>
 </ion-view>

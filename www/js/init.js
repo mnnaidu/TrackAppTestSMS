@@ -181,9 +181,9 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 			.state('app', {
 				url: '/app',
 				abstract: true,
-				templateUrl: 'js/app.html'
+                templateUrl: 'js/app.html'
 			})
-			.state('app.expenses', {
+            .state('app.expenses', {
 				url: '/expenses',
 				views: {
 					'tab-expenses': {
@@ -270,6 +270,14 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
+			}).state('app.ratingSummaryA', {
+				url: '/ratingsummaryA',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingSummaryA.html',
+						controller: 'rating2Ctrl'
+					}
+				}
 			}).state('app.ratingNotAvailable', {
 				url: '/ratingna',
 				views: {
@@ -278,11 +286,43 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
+			}).state('app.loanpay', {
+				url: '/loanpay',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/loanPay.html',
+						controller: 'rating2Ctrl'
+					}
+				}
 			}).state('app.ratingNotAvailable1', {
 				url: '/ratingna1',
 				views: {
 					'tab-dev': {
 						templateUrl: 'js/app/rating/ratingNotAvailable1.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingNotAvailable2', {
+				url: '/ratingna2',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingNotAvailable2.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingNotAvailable3', {
+				url: '/ratingna3',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingNotAvailable3.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.expensePattern', {
+				url: '/expensepattern',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/expensePattern.html',
 						controller: 'rating2Ctrl'
 					}
 				}
@@ -310,19 +350,35 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
+			}).state('app.ratingReqestDone1', {
+				url: '/ratingrequestdone1',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingRequestDone1.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.ratingReqestDone2', {
+				url: '/ratingrequestdone2',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/ratingRequestDone2.html',
+						controller: 'rating2Ctrl'
+					}
+				}
+			}).state('app.newBudget', {
+				url: '/newbudget',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/newBudget.html',
+						controller: 'rating2Ctrl'
+					}
+				}
 			}).state('app.ratingEndorse', {
 				url: '/ratingendorse',
 				views: {
 					'tab-dev': {
 						templateUrl: 'js/app/rating/ratingEndorse.html',
-						controller: 'rating2Ctrl'
-					}
-				}
-			}).state('app.ratingSummaryWithEndorse', {
-				url: '/ratingsummarywithendorse',
-				views: {
-					'tab-dev': {
-						templateUrl: 'js/app/rating/ratingSummaryWithEndorse.html',
 						controller: 'rating2Ctrl'
 					}
 				}
@@ -348,9 +404,25 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 					'tab-dev': {
 						templateUrl: 'js/app/rating/recomendations3.html',
 						controller: 'rating2Ctrl'
-					}
-				}
-			}).state('app.recomendationsAll', {
+			         }
+                }
+            }).state('app.endorse', {
+				url: '/endorse',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/endorse.html',
+						controller: 'rating2Ctrl'
+			         }
+                }
+            }).state('app.recomendations4', {
+				url: '/recomendations4',
+				views: {
+					'tab-dev': {
+						templateUrl: 'js/app/rating/recomendations4.html',
+						controller: 'rating2Ctrl'
+			         }
+                }
+            }).state('app.recomendationsAll', {
 				url: '/recomendationsAll',
 				views: {
 					'tab-recomendation': {

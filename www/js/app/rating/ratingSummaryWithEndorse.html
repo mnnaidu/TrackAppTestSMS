@@ -1,22 +1,28 @@
 <ion-view view-title="My Credit Score">
 	<ion-content>
         
-        <div class="card" ng-click="next('app/ratingendorse')"  >
+        <div class="card" ng-click="next('app/ratingform')">
           
-         <div class="item item-divider list-head1 item-text-wrap">
-           Congrats! you have earned credit badge with endorsement
-         </div>
+            <div class="item item-divider list-head1">
+                Sigma Credit Profile   
+            </div>
           
-          <div class="item-image">
-            <img src="img/credit.svg" height="128" width="128"/>
+            <div class="item item-text-wrap">
+             <svg height="100" width="70" class="item-recommend-avatar"> 
+                 <a transform="translate(30,30)">
+                <g><circle fill="#f60" r="30"></circle></g>
+                <g><clippath id="g-clip">
+                        <rect height="50" id="g-clip-rect" width="100" x="-50" y="-40">
+                        </rect>
+                    </clippath>
+                    <circle clip-path="url(#g-clip)" fill="#fff" r="27"></circle>
+                </g>
+                 </a>
+              </svg>
+              <div class="card-item" >Update your credit history information, helps us to find more lenders and improve your credit rating</div>
           </div>
-
-         <div class="item">
-              <img src="img/endorse.svg" class="fl"  height="40" width="40"/>
-             <strong class="item-text-wrap card-item"> 2 friends endorsed you </strong>
-          </div>
-
         </div>
+
         
         <div class="card" >
           
