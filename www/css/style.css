@@ -196,7 +196,28 @@
 	color: #fff;
 }
 
-.card-icon {
+.list-head1.b {
+	background: #eabd35;
+	color: #592c04;
+}
+
+.list-head1.bc {
+	background: #F60;
+	color: #fff;
+}
+
+.list-head1.a {
+	background: #44a828;
+	color: #fff;
+}
+
+
+.list-head1.c {
+	background: #ef4545;
+	color: #fff;
+}
+
+.card-icon {eabd35
 	font-size: 24px;
 	color: #428dba;
 }
@@ -226,8 +247,8 @@
 	float: left;
 	margin-left: 10px;
 	padding-right: 10px;
-	height: 70px;
-	width: 160px;
+	height: 50%;
+	width: 50%;
 }
 
 .item-content.loan{

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<svg width="640" height="350" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="642" height="352" id="canvas_background" fill="#fff"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_2" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse fill="#44a828" stroke-width="1.5" cx="258.250004" cy="163.945313" id="svg_1" rx="52.500004" ry="47.499997" stroke="#44a828"/>
+  <ellipse fill="#eabd35" stroke-width="1.5" cx="371.249997" cy="163.945308" id="svg_8" rx="53" ry="47" stroke="#eabd35"/>
+  <text fill="#592c04" stroke-width="0" x="349.765636" y="187.522752" id="svg_9" font-size="69" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve" font-style="normal" font-weight="bold" stroke="#000000">B</text>
+  <ellipse fill="#ef4545" stroke-width="1.5" cx="484.749999" cy="163.945308" id="svg_10" rx="53" ry="47" stroke="#ef4545"/>
+  <text fill="#ffffff" stroke-width="0" x="460.070324" y="187.52785" id="svg_11" font-size="69" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve" font-style="normal" font-weight="bold">C</text>
+  <text fill="#fff" stroke="#44a828" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="234.750004" y="187.945309" id="svg_13" font-size="52" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve" font-weight="bold"/>
+  <text fill="#ef4545" stroke-width="0" stroke-opacity="null" x="223.881202" y="234.375003" id="svg_14" font-size="35" font-family="Georgia, Times, 'Times New Roman', serif" text-anchor="left" xml:space="preserve" transform="matrix(0.7539370059967043,0,0,0.7272727489471432,146.70767748355865,68.13635623455048) " stroke="#ef4545" font-style="italic">find loans for you</text>
+  <ellipse fill="#595ee5" stroke-width="1.5" cx="128.749999" cy="149.945313" id="svg_16" rx="71.000006" ry="69.499991" stroke="#44a828"/>
+  <text fill="#ffffff" stroke-width="0" stroke-opacity="null" x="94.25" y="168.155462" id="svg_15" font-size="92" font-family="Georgia, Times, 'Times New Roman', serif" text-anchor="left" xml:space="preserve" transform="matrix(1.3333333730697632,0,0,1.1553398370742798,-33.16667062044144,-11.883497536182404) " stroke="#ef4545">&#931;</text>
+  <text fill="#ffffff" stroke-width="0" x="233.070324" y="186.52785" id="svg_17" font-size="69" font-family="Helvetica, Arial, sans-serif" text-anchor="left" xml:space="preserve" font-style="normal" font-weight="bold">A</text>
+ </g>
+</svg>

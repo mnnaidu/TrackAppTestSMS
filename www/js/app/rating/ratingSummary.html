@@ -1,4 +1,4 @@
-<ion-view view-title="Sigma Indicator">
+<ion-view view-title="&Sigma; Indicator">
 	<ion-content>
         
         <div class="card" ng-click="next('loanpay')">
@@ -15,18 +15,34 @@
         <div class="card" ng-click="nextSigma()">
           
 
-         <div class="item item-divider list-head1">
-           Sigma Indicator
+         <div class="item item-divider list-head1 b">
+           &Sigma; Indicator
          </div>
           
           <div class="item item-text-wrap">
-              <img src="img/star.svg"  class="item-recommend-avatar" height="80"  /><b>you are spender, rated "B+"</b><p>  recently 3days </p>
+              <img src="img/bplus.svg"  class="item-recommend-avatar" height="80"  /><p> recently 3days </p>
               <div class="card-item">avail loans from 30,000 - 50,000, we able to offer lower rates loans based on your rating </div>
           </div>
             
         </div>
 
+        <div class="card">
+        <div class="list card">
+         <div class="item item-divider list-head1 b">
+            Loans Offered for "B+"
+         </div>
 
+            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
+                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
+                <div class="item-content">
+                    <img src="{{cf.logo}}" class= "logo-item"/>
+                    <div class="list-item-place  item-loan-desc fl"> {{cf.descb1}} </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        
+            
         <div class="card" ng-click="next('app/recomendations3')" >
           
 
@@ -47,24 +63,6 @@
              <strong class="item-text-wrap card-item">check our listed tips to reduce EMI</strong>
               
           </div>
-        </div>
-        
-
-        
-        <div class="card">
-        <div class="list card">
-         <div class="item item-divider list-head1">
-            Loans Offered
-         </div>
-
-            <div class="item" data-ng-repeat="cf in creditOffers" ng-click="showAlert('Thank u','soon our customer care will get in touch with you for loan')">
-                <!--i class="icon fa ng-class: loan.icon; card-icon"></i -->
-                <div class="item-content">
-                    <img src="{{cf.logo}}" class= "logo-item"/>
-                    <div class="list-item-place  item-loan-desc fl"> {{cf.descb1}} </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
         </div>
     </ion-content>
 </ion-view>
