@@ -1,9 +1,29 @@
 'use strict';
 angular.module('ratingController', [])
-	.controller('ratingCtrl', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state', composeRating])
-    .controller('rating1Ctrl', ['$scope', '$ionicModal','$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state',composeRating1])
-    .controller('rating2Ctrl', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state',composeRating1])    
-    .controller('appController', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state',composeRating1]);
+	.factory('sigmaIndicatorApp', function() {
+        var sigmaFlow = ['/ratingform'];
+        var currSigma = '/app/ratingna';
+        
+        return {
+             welcomePopUpLoaded : false,
+             nextSigma : function() { 
+                    var next  = sigmaFlow.shift();
+                    if(next) {
+                        currSigma = next;
+                        return next;
+                    } else {
+                        return currSigma;
+                    }
+             },
+             setNextSigma : function(path) { sigmaFlow.push(path); }
+        }
+     })
+    .controller('ratingCtrl', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state','sigmaIndicatorApp', composeRating])
+    .controller('rating1Ctrl', ['$scope', '$ionicModal','$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state','sigmaIndicatorApp',composeRating1])
+    .controller('rating2Ctrl', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state','sigmaIndicatorApp',composeRating1])    
+    .controller('appController', ['$scope', '$ionicModal', '$log', '$timeout', '$ionicPopup', 'apiServices', '$location', '$state','sigmaIndicatorApp',composeRating1]);
+
+
 
 
 function composeRating($scope, $log, $timeout, $ionicPopup, apiServices,$location) {
@@ -30,7 +50,7 @@ function composeRating($scope, $log, $timeout, $ionicPopup, apiServices,$locatio
     }
 }
 
-function composeRating1($scope, $ionicModal, $log, $timeout, $ionicPopup, apiServices,$location,$state  ) {
+function composeRating1($scope, $ionicModal, $log, $timeout, $ionicPopup, apiServices,$location,$state,sigmaIndicatorApp  ) {
     
     $log.log('rating1 ctrl called!');
     
@@ -48,19 +68,37 @@ function composeRating1($scope, $ionicModal, $log, $timeout, $ionicPopup, apiSer
     $scope.title = 'Sigma Indicator';
     
     $scope.showModal = function() {
-        if($location.path() == '/app/ratingna') {
+        if($location.path() == '/app/ratingna' && !sigmaIndicatorApp.welcomePopUpLoaded) {
             $scope.modal.show();
         }else {
             $log.log('modal ctrl called!3',$location.path()); 
         }
     }
     
-   $scope.$on('modal.removed', function() {
+    $scope.$on('modal.removed', function() {
       $log.log('removed called');
        $state.go('app.ratingNotAvailable');
     });
+    $scope.$on('modal.hidden', function() {
+      $log.log('hidden called');
+      sigmaIndicatorApp.welcomePopUpLoaded = true;
+    });
+    
+    
     
    
+    $scope.showAlertAndGo = function(title,msg,path,route) {
+        if(route) {
+            sigmaIndicatorApp.setNextSigma(route);
+        }
+        var alertPopup = $ionicPopup.alert({
+            title: title,
+            template: msg
+        }).then(function(res) {
+            $state.go(path);
+        });
+    }
+    
     $scope.showAlertAndNext = function(title,msg,path) {
          var alertPopup = $ionicPopup.alert({
             title: title,
@@ -153,11 +191,24 @@ function composeRating1($scope, $ionicModal, $log, $timeout, $ionicPopup, apiSer
         logo : 'img/kotak.svg'
     });
 
+
+    $scope.nextSigma = function(path) {
+        var nextSigmaPath = sigmaIndicatorApp.nextSigma();
+        $log.log('going to .. ' , nextSigmaPath);
+        $location.path(nextSigmaPath); // path not hash
+    }
+    
     $scope.next = function(path) {
         $log.log("Going To path",path);
         
         $location.path(path); // path not hash
     }
+    
+    $scope.go = function(path) {
+        $log.log("Going To path",path);
+        $state.go(path); // path not hash
+    }
+
     
     $scope.restart = function(path) {
         $log.log('restart' , path);

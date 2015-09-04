@@ -286,14 +286,10 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
-			}).state('app.loanpay', {
+			}).state('loanpay', {
 				url: '/loanpay',
-				views: {
-					'tab-dev': {
-						templateUrl: 'js/app/rating/loanPay.html',
-						controller: 'rating2Ctrl'
-					}
-				}
+                templateUrl: 'js/app/rating/loanPay.html',
+                controller: 'rating2Ctrl'
 			}).state('app.ratingNotAvailable1', {
 				url: '/ratingna1',
 				views: {
@@ -318,30 +314,18 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
-			}).state('app.expensePattern', {
+			}).state('expensePattern', {
 				url: '/expensepattern',
-				views: {
-					'tab-dev': {
-						templateUrl: 'js/app/rating/expensePattern.html',
-						controller: 'rating2Ctrl'
-					}
-				}
-			}).state('app.ratingForm', {
+                templateUrl: 'js/app/rating/expensePattern.html',
+                controller: 'rating2Ctrl'
+			}).state('ratingForm', {
 				url: '/ratingform',
-				views: {
-					'tab-dev': {
-						templateUrl: 'js/app/rating/ratingForm.html',
-						controller: 'rating2Ctrl'
-					}
-				}
-			}).state('app.ratingForm2', {
+                templateUrl: 'js/app/rating/ratingForm.html',
+                controller: 'rating2Ctrl'
+			}).state('ratingForm2', {
 				url: '/ratingform2',
-				views: {
-					'tab-dev': {
-						templateUrl: 'js/app/rating/ratingForm2.html',
-						controller: 'rating2Ctrl'
-					}
-				}
+                templateUrl: 'js/app/rating/ratingForm2.html',
+                controller: 'rating2Ctrl'
 			}).state('app.ratingReqestDone', {
 				url: '/ratingrequestdone',
 				views: {
@@ -366,14 +350,10 @@ angular.module('money-tracker', ['ionic', 'controllers', 'services'])
 						controller: 'rating2Ctrl'
 					}
 				}
-			}).state('app.newBudget', {
+			}).state('newBudget', {
 				url: '/newbudget',
-				views: {
-					'tab-dev': {
-						templateUrl: 'js/app/rating/newBudget.html',
-						controller: 'rating2Ctrl'
-					}
-				}
+                templateUrl: 'js/app/rating/newBudget.html',
+                controller: 'rating2Ctrl'
 			}).state('app.ratingEndorse', {
 				url: '/ratingendorse',
 				views: {
