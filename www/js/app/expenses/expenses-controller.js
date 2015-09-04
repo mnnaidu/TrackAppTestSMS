@@ -7,7 +7,10 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 	$scope.expensesGraphData = [];
 	// initially load empty graph
 	function initExpensesGraphFn() {
-		var cDate = new Date(), cYear = cDate.getFullYear(), cMonth = cDate.getMonth() + 1, retMonArr = [];
+		var cDate = new Date(),
+			cYear = cDate.getFullYear(),
+			cMonth = cDate.getMonth() + 1,
+			retMonArr = [];
 		for (var i = 6; i > 0; i--) {
 			var m, y;
 			if (cMonth < 6) {
@@ -27,38 +30,38 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 	$scope.recentSpends = [];
 	$scope.bills = [];
 	$scope.spendsByAccount = [];
-	$scope.getClassNames = function(accType, isAtmTrans) {
-		if(isAtmTrans) {
+	$scope.getClassNames = function (accType, isAtmTrans) {
+		if (isAtmTrans) {
 			return 'atm fa-user';
 		} else {
 			var retClassNames = '';
 			switch (accType) {
-				case 'CREDIT':
-					retClassNames = 'cc fa-credit-card';
-					break;
-				case 'DEBIT':
-					retClassNames = 'dc fa-credit-card';
-					break;
-				case 'DEBIT-ECS':
-					retClassNames = 'acc fa-university';
-					break;
-				case 'DEBIT-BILL':
-					retClassNames = 'acc fa-university';
-					break;
-				case 'CREDIT-BILL':
-					retClassNames = 'cc fa-credit-card';
-					break;
+			case 'CREDIT':
+				retClassNames = 'cc fa-credit-card';
+				break;
+			case 'DEBIT':
+				retClassNames = 'dc fa-credit-card';
+				break;
+			case 'DEBIT-ECS':
+				retClassNames = 'acc fa-university';
+				break;
+			case 'DEBIT-BILL':
+				retClassNames = 'acc fa-university';
+				break;
+			case 'CREDIT-BILL':
+				retClassNames = 'cc fa-credit-card';
+				break;
 			};
 			return retClassNames;
 		}
 	}
-	$timeout(function(){
+	$timeout(function () {
 		renderExpensesGraph();
 		renderExpensesList();
 	}, 2000);
 	var width, height, screenRatio, realWidth, realHeight, margin, padding, maxValue, x, y, xAxis, yAxis, graph, color;
-	var renderExpensesGraph = function() {
-		apiServices.getExpensesGraphData().then(function(response){
+	var renderExpensesGraph = function () {
+		apiServices.getExpensesGraphData().then(function (response) {
 			$scope.expensesGraphData = _.has(response, 'data') ? response.data : [];
 			if (document.getElementById('expenses-graph').innerHTML === '') {
 				renderExpensesGraphFn();
@@ -84,11 +87,11 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 		renderExpensesGraph();
 		renderExpensesList();
 	});
-    
-     $scope.nextBy = function(path) {
-        $log.log("Going To path",path);
-        $location.path(path); // path not hash
-    }
+
+	$scope.nextBy = function (path) {
+		$log.log("Going To path", path);
+		$location.path(path); // path not hash
+	}
 
 	function renderExpensesGraphFn() {
 		width = screen.height,
@@ -218,10 +221,10 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 			.ease("linear")
 			.attr('y', function (d) {
 				return y(d.expenses) - 10;
-		});
+			});
 
 		graph.selectAll('.line')
-			.data([maxValue * Math.random(0.2, 0.8)])
+			.data([maxValue * 0.65])
 			.enter()
 			.append('line')
 			.attr({
@@ -287,6 +290,19 @@ function expensesCtrlFn($scope, $log, $timeout, apiServices, couchbase, $locatio
 			})
 			.text(function (d) {
 				return d.expenses;
+			});
+
+		var budgetLine = graph.selectAll('.budget-line').data([maxValue * 0.65]);
+		budgetLine.transition()
+			.duration(500)
+			.ease('linear')
+			.attr({
+				'y1': function (d) {
+					return y(d);
+				},
+				'y2': function (d) {
+					return y(d);
+				}
 			});
 	}
 }
