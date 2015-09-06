@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<svg width="640" height="350" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="352" width="642" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse stroke="#44a828" ry="47.499997" rx="52.500004" id="svg_1" cy="163.945313" cx="258.250004" stroke-width="1.5" fill="#44a828"/>
+  <ellipse stroke="#eabd35" ry="47" rx="53" id="svg_8" cy="163.945308" cx="371.249997" stroke-width="1.5" fill="#eabd35"/>
+  <text stroke="#000000" font-weight="bold" font-style="normal" xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="69" id="svg_9" y="187.522752" x="349.765636" stroke-width="0" fill="#592c04">B</text>
+  <ellipse stroke="#ef4545" ry="47" rx="53" id="svg_10" cy="163.945308" cx="484.749999" stroke-width="1.5" fill="#ef4545"/>
+  <text font-weight="bold" font-style="normal" xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="69" id="svg_11" y="187.52785" x="460.070324" stroke-width="0" fill="#ffffff">C</text>
+  <text style="cursor: move;" font-weight="bold" xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="52" id="svg_13" y="187.945309" x="234.750004" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#44a828" fill="#fff"/>
+  <text font-style="italic" stroke="#ef4545" transform="matrix(0.7539370059967043,0,0,0.7272727489471432,146.70767748355865,68.13635623455048) " xml:space="preserve" text-anchor="left" font-family="Georgia, Times, 'Times New Roman', serif" font-size="35" id="svg_14" y="237.125003" x="188.069191" stroke-opacity="null" stroke-width="0" fill="#ef4545">find loans for you...</text>
+  <ellipse stroke="#595ee5" ry="69.499991" rx="71.000006" id="svg_16" cy="149.945313" cx="128.749999" stroke-width="1.5" fill="#595ee5"/>
+  <text stroke="#ef4545" transform="matrix(1.3333333730697632,0,0,1.1553398370742798,-33.16667062044144,-11.883497536182404) " xml:space="preserve" text-anchor="left" font-family="Georgia, Times, 'Times New Roman', serif" font-size="92" id="svg_15" y="168.155462" x="94.25" stroke-opacity="null" stroke-width="0" fill="#ffffff">&#931;</text>
+  <text font-weight="bold" font-style="normal" xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="69" id="svg_17" y="186.52785" x="233.070324" stroke-width="0" fill="#ffffff">A</text>
+ </g>
+</svg>
